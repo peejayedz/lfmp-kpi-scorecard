@@ -168,6 +168,18 @@ button.mini{cursor:pointer} button.mini:hover span:first-child{color:var(--link)
 .pwfield{display:grid;gap:6px;margin:14px 0 8px}
 .pwfield input{background:var(--card);border:1px solid var(--rule);border-radius:6px;padding:9px 10px}
 
+/* how this works */
+.topline{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:2px}
+.topline .brandline{margin:0}
+.howbtn{border-radius:999px}
+.modal.how{width:min(760px,100%)}
+.how .hbody{margin-top:14px;display:grid;gap:18px;font-size:14px;line-height:1.55}
+.how h4{font-family:var(--serif);font-weight:600;font-size:16px;margin:0 0 6px}
+.how p{margin:0 0 6px;max-width:68ch} .how ul{margin:0;padding-left:18px} .how li{margin:3px 0}
+.how table{border-collapse:collapse;width:100%;font-size:13px}
+.how th,.how td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
+.how th{color:var(--ink-2);font-weight:600;font-size:12px}
+.how code{font-size:12px;background:var(--track);padding:1px 5px;border-radius:3px}
 @media (max-width:860px){
   .summary{grid-template-columns:1fr} .summary section+section{border-left:0;border-top:1px solid var(--rule)}
   .hero{grid-template-columns:1fr} .hero .left{border-right:0;padding-right:0;border-bottom:1px solid var(--rule);padding-bottom:18px}
@@ -191,9 +203,13 @@ button.mini{cursor:pointer} button.mini:hover span:first-child{color:var(--link)
 </head>
 <body>
 <main class="wrap"><div class="card">
+  <div class="topline"><p class="brandline"><b id="brand">LeadPro.Legal</b> client dashboard</p>
+    <button class="btn howbtn" id="howBtn" aria-haspopup="dialog">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14"/><path d="M12 17.5h.01"/></svg>
+        How this works
+      </button></div>
   <header class="head">
     <div class="titles">
-      <p class="brandline"><b id="brand">LeadPro.Legal</b> client dashboard</p>
       <h1>Intake &amp; Signed Clients Scorecard</h1>
       <p class="sub" id="updated">Loading…</p>
       <div class="cmp-line" id="cmpLine" hidden></div>
@@ -693,6 +709,62 @@ function openUnlock(then) {
   });
 }
 
+// ---------- how this works ----------
+function openHow() {
+  const S = cfg.stages || {}, T = cfg.tags || {}, G = pub?.targets || cfg.targets || {};
+  const list = a => (a || []).length ? a.map(x => `<code>${esc(x)}</code>`).join(' ') : '<span class="muted">—</span>';
+  const ts = pub ? new Date((records || pub).generatedAt).toLocaleString('en-US', { timeZone: TZ(), dateStyle: 'medium', timeStyle: 'short' }) : '—';
+  const steps = [
+    ['Contacted', 'contacted', 'A two-way contact: a reply, a connected call, a booking, or one of these stages.'],
+    ['Qualified', 'qualified', 'Marked qualified (tag or field), or one of these stages.'],
+    ['Consult booked', 'consultBooked', `An appointment on a calendar whose name contains ${list(cfg.booking?.calendarKeywords)}, or one of these stages.`],
+    ['Consult held', 'consultHeld', 'The consult appointment is marked Showed, or one of these stages.'],
+    ['Agreement sent', 'agreementSent', 'One of these stages.'],
+    ['Signed', 'signed', 'The opportunity is marked <b>Won</b>, or one of these stages.'],
+  ];
+  $('modal').className = 'modal how';
+  $('modal').innerHTML = `
+    <div class="mhead"><div><h3 id="mTitle">How this scorecard works</h3>
+      <div class="def">What each number means, where it comes from, and how to use the controls.</div></div>
+      <button class="close" data-close aria-label="Close">×</button></div>
+    <div class="hbody">
+      <section><h4>What it shows</h4>
+        <p>How new leads move from first contact to signed client, and where they drop off. The top boxes summarise what's on track, what needs attention and what to fix first. The funnel shows how many leads reached each step, and the four columns below break each step down against its goal.</p></section>
+      <section><h4>Where the numbers come from</h4>
+        <ul>
+          <li>Pulled from GoHighLevel automatically every 30 minutes. Last sync: <b>${esc(ts)}</b>.</li>
+          <li>Pipeline: ${list(cfg.pipelines?.length ? cfg.pipelines : ['All pipelines'])}. Each opportunity created in the selected dates counts as one new lead.</li>
+          <li>Consults come from the GHL calendar, and speed to first contact and missed calls come from the GHL call log.</li>
+        </ul></section>
+      <section><h4>Using the dashboard</h4>
+        <ul>
+          <li><b>Date selector:</b> pick a preset like Last 30 days or This month, or choose any From and To dates.</li>
+          <li><b>Compare to prior:</b> shows each number next to the previous period, with the change in green (better) or red (worse). You can also compare any two date ranges.</li>
+          <li><b>Refresh data:</b> starts a fresh pull from GoHighLevel. New numbers appear in 1–2 minutes.</li>
+          <li><b>Unlock names:</b> enter the team passphrase once to use custom dates and to click any number, funnel step or source and see the people behind it.</li>
+        </ul></section>
+      <section><h4>How each step is counted</h4>
+        <p>The funnel follows the leads that came in during the selected dates. A lead that reached a later step also counts for every earlier step, so each bar is part of the one above it.</p>
+        <div class="srcwrap"><table><thead><tr><th>Step</th><th>Counts when</th><th>GHL stages</th></tr></thead><tbody>
+          ${steps.map(([n, k, d]) => `<tr><td><b>${n}</b></td><td>${d}${T[k]?.length ? ` Tags: ${list(T[k])}.` : ''}</td><td>${list(S[k])}</td></tr>`).join('')}
+          <tr><td><b>Turned away</b></td><td>Marked Lost or not qualified, or in a turned-away stage, and never signed. The reason comes from a tag starting with <code>${esc(cfg.turnedAway?.tagPrefix || '')}</code>.</td><td>${list(cfg.turnedAway?.stages)}</td></tr>
+        </tbody></table></div></section>
+      <section><h4>Goals and badges</h4>
+        <ul>
+          <li>Lead → signed: ${G.leadToSignedPct ?? '—'}% or more. Speed to first contact: ${G.speedToLeadMin ?? '—'} minutes or less. Contacted within 5 min: ${G.within5Pct ?? '—'}%.</li>
+          <li>Contact rate: ${G.contactRatePct ?? '—'}%. Qualified → consult booked: ${G.bookRatePct ?? '—'}%. Show rate: ${G.showRatePct ?? '—'}%. No-show rate: ${G.noShowPct ?? '—'}% or less.</li>
+          <li>Agreements sent after consults: ${G.sentRatePct ?? '—'}%. Agreement → signed: ${G.signRatePct ?? '—'}%.</li>
+          <li>A rate based on fewer than ${MIN()} leads shows <b>Too few</b> instead of a badge, so one or two leads can't swing it.</li>
+          <li>Cost per signed client uses the monthly ad spend entered in the settings.</li>
+        </ul></section>
+      <section><h4>Privacy</h4>
+        <p>The page only shows totals until someone unlocks it. Names, emails and phone numbers are stored encrypted and are decrypted in your browser with the team passphrase.</p></section>
+    </div>`;
+  $('scrim').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  $('modal').querySelector('.close').focus();
+}
+
 // ---------- date range + compare ----------
 function setRange(next) { sel = next; cmp.b = null; compute(); render(); $('rangePop').classList.remove('open'); $('rangeBtn').setAttribute('aria-expanded', 'false'); }
 function closeCmp() { $('cmpPop').classList.remove('open'); $('cmpBtn').setAttribute('aria-expanded', 'false'); }
@@ -767,6 +839,7 @@ $('applyCustom').addEventListener('click', () => {
   setRange(f <= t ? { key: 'custom', from: f, to: t } : { key: 'custom', from: t, to: f });
 });
 $('refreshBtn').addEventListener('click', refresh);
+$('howBtn').addEventListener('click', () => { if (cfg) openHow(); });
 $('lockBtn').addEventListener('click', () => (records ? lock() : openUnlock(null)));
 const tip = $('tip');
 document.addEventListener('mousemove', e => {
