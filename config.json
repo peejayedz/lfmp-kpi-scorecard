@@ -7,7 +7,9 @@
   "lookbackDays": 400,
   "minSample": 5,
   "_pipelinesNote": "Pipeline names to include. Empty = every pipeline. The sync log lists every pipeline and stage name so you can fill these in.",
-  "pipelines": [],
+  "pipelines": [
+    "01. Sales Pipeline"
+  ],
   "targets": {
     "leadToSignedPct": 8,
     "speedToLeadMin": 5,
@@ -21,42 +23,106 @@
   },
   "_stagesNote": "Stage names (any pipeline) that mean the lead reached that step. Later steps automatically count as earlier ones, so list only the stages that first prove each step.",
   "stages": {
-    "contacted": ["Contacted", "In Conversation", "Engaged"],
-    "qualified": ["Qualified"],
-    "consultBooked": ["Consult Booked", "Strategy Call Booked", "Discovery Call Booked", "Appointment Booked"],
-    "consultHeld": ["Consult Held", "Strategy Call Held", "Discovery Call Held", "Showed"],
-    "agreementSent": ["Agreement Sent", "Proposal Sent", "Contract Sent"],
-    "signed": ["Signed", "Closed Won", "Won", "Client"],
-    "noShow": ["No Show", "No-Show"]
+    "contacted": [
+      "Initial Contact",
+      "Right Fit Call"
+    ],
+    "qualified": [
+      "Discovery Call"
+    ],
+    "consultBooked": [
+      "Strategy Session"
+    ],
+    "consultHeld": [
+      "Price Negotiation"
+    ],
+    "agreementSent": [
+      "Contract"
+    ],
+    "signed": [],
+    "noShow": []
   },
   "tags": {
-    "contacted": ["contacted"],
+    "contacted": [
+      "contacted"
+    ],
     "consultBooked": [],
-    "consultHeld": ["showed"],
-    "noShow": ["no show", "no-show", "noshow"],
-    "agreementSent": ["agreement sent", "proposal sent", "contract sent"],
-    "signed": ["signed client", "lfmp client"]
+    "consultHeld": [
+      "showed"
+    ],
+    "noShow": [
+      "no show",
+      "no-show",
+      "noshow"
+    ],
+    "agreementSent": [
+      "agreement sent",
+      "proposal sent",
+      "contract sent"
+    ],
+    "signed": [
+      "signed client",
+      "lfmp client"
+    ]
   },
   "qualification": {
-    "contactFields": ["Qualified?"],
-    "opportunityFields": ["Qualified"],
-    "yesValues": ["yes", "qualified", "true", "1"],
-    "noValues": ["no", "not qualified", "unqualified", "disqualified", "false", "0"],
-    "tags": ["qualified", "qualified lead", "qualified_lead"],
-    "notTags": ["not qualified", "unqualified", "disqualified"]
+    "contactFields": [
+      "Qualified?"
+    ],
+    "opportunityFields": [
+      "Qualified"
+    ],
+    "yesValues": [
+      "yes",
+      "qualified",
+      "true",
+      "1"
+    ],
+    "noValues": [
+      "no",
+      "not qualified",
+      "unqualified",
+      "disqualified",
+      "false",
+      "0"
+    ],
+    "tags": [
+      "qualified",
+      "qualified lead",
+      "qualified_lead"
+    ],
+    "notTags": [
+      "not qualified",
+      "unqualified",
+      "disqualified"
+    ]
   },
   "_turnedAwayNote": "Why leads were turned away: a tag starting with tagPrefix (e.g. 'turned away: wrong practice area'), else the GHL lost reason, else the stage name if it's listed in stages.",
   "turnedAway": {
     "tagPrefix": "turned away:",
-    "stages": ["Not a Fit", "Disqualified", "Unqualified", "Lost"]
+    "stages": [
+      "Archived"
+    ]
   },
-  "_bookingNote": "A consult = an appointment on a calendar whose name contains one of these keywords. Empty list = every calendar counts.",
+  "_bookingNote": "A consult = an appointment on a calendar whose name contains one of these keywords (matches 'Digital Marketing Strategy Session'). Empty list = every calendar counts.",
   "booking": {
-    "calendarKeywords": ["strategy", "consult", "discovery", "intro"]
+    "calendarKeywords": [
+      "strategy session"
+    ]
   },
   "speedToLead": {
     "useBusinessHours": true,
-    "businessHours": { "days": [1, 2, 3, 4, 5], "start": 9, "end": 18 },
+    "businessHours": {
+      "days": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "start": 9,
+      "end": 18
+    },
     "connectedCallSeconds": 60,
     "maxDays": 7
   },
