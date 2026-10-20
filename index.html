@@ -444,7 +444,7 @@ function render() {
   $('cmpBtn').classList.toggle('on', cmp.on);
   $('cmpBtnLabel').textContent = cmp.on ? 'Comparing' : 'Compare to prior';
   const ts = new Date((records || pub).generatedAt);
-  $('updated').textContent = `${cfg.locationName}, ${sel.key === 'custom' ? range.label : `${range.label.toLowerCase()} (${fmtSpan(range.from, range.to)})`}. Data as of ${ts.toLocaleString('en-US', { timeZone: TZ(), dateStyle: 'medium', timeStyle: 'short' })}; syncs from GoHighLevel every 30 minutes.`;
+  $('updated').textContent = `${cfg.locationName}, ${sel.key === 'custom' ? range.label : `${range.label.toLowerCase()} (${fmtSpan(range.from, range.to)})`}. Data as of ${ts.toLocaleString('en-US', { timeZone: TZ(), dateStyle: 'medium', timeStyle: 'short' })}; syncs from GoHighLevel a few times a day.`;
   renderCompareLine();
 
   const drill = canDrill();
@@ -778,7 +778,7 @@ function openHow() {
         <p>How new leads move from first contact to signed client, and where they drop off. The top boxes summarise what's on track, what needs attention and what to fix first. The funnel shows how many leads reached each step, and the four columns below break each step down against its goal.</p></section>
       <section><h4>Where the numbers come from</h4>
         <ul>
-          <li>Pulled from GoHighLevel automatically every 30 minutes. Last sync: <b>${esc(ts)}</b>.</li>
+          <li>Pulled from GoHighLevel automatically a few times a day. Last sync: <b>${esc(ts)}</b>. Press <b>Refresh data</b> any time you need the newest numbers.</li>
           <li>Pipeline: ${list(cfg.pipelines?.length ? cfg.pipelines : ['All pipelines'])}. Each opportunity created in the selected dates counts as one new lead.</li>
           <li>Consults come from the GHL calendar, and speed to first contact and missed calls come from the GHL call log.</li>
         </ul></section>
@@ -795,6 +795,10 @@ function openHow() {
           ${steps.map(([n, k, d]) => `<tr><td><b>${n}</b></td><td>${d}${T[k]?.length ? ` Tags: ${list(T[k])}.` : ''}</td><td>${list(S[k])}</td></tr>`).join('')}
           <tr><td><b>Turned away</b></td><td>Marked Lost or not qualified, or in a turned-away stage, and never signed. The reason comes from a tag starting with <code>${esc(cfg.turnedAway?.tagPrefix || '')}</code>.</td><td>${list(cfg.turnedAway?.stages)}</td></tr>
         </tbody></table></div></section>
+      <section><h4>Speed to first contact</h4>
+        <p>Minutes from the lead being created to the <b>first outbound call</b> from the team to that person, answered or not. Emails and texts don't stop the clock, so this measures how fast somebody picks up the phone.</p>
+        <p>It counts business hours only (${esc((cfg.speedToLead?.businessHours?.days || []).length === 5 ? 'Mon\u2013Fri' : 'set days')} ${cfg.speedToLead?.businessHours?.start ?? 9}:00\u2013${cfg.speedToLead?.businessHours?.end ?? 18}:00, ${esc(TZ())}), so a lead arriving at 8pm isn't penalised for the overnight wait. <b>Contacted</b> is broader than this: it counts a reply from the lead on any channel, a connected call of a minute or more, or a booked appointment.</p>
+        <p>Calls must be logged in GoHighLevel to be counted. Calls made outside GHL leave no record for the dashboard to time, and the tile will show a dash.</p></section>
       <section><h4>Goals and badges</h4>
         <ul>
           <li>Lead → signed: ${G.leadToSignedPct ?? '—'}% or more. Speed to first contact: ${G.speedToLeadMin ?? '—'} minutes or less. Contacted within 5 min: ${G.within5Pct ?? '—'}%.</li>
@@ -837,7 +841,7 @@ async function refresh() {
       say('Still running. The page will pick up the new data on its own when it lands.');
     } else {
       await reloadAll();
-      say((records || pub).generatedAt !== before ? 'Loaded newer data.' : 'You already have the newest data. It syncs every 30 minutes' + (records ? '.' : '; unlock names to start a sync right now.'));
+      say((records || pub).generatedAt !== before ? 'Loaded newer data.' : 'You already have the newest data. It syncs a few times a day' + (records ? '.' : '; unlock names to start a sync right now.'));
     }
   } catch (e) { say(`Refresh failed: ${e.message}`); }
   finally { btn.disabled = false; icon.classList.remove('spin'); }
