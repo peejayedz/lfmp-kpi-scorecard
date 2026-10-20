@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-20T10:23:25.746Z",
+  "generatedAt": "2026-10-20T15:21:08.909Z",
   "location": "Law Firm Marketing Pros",
   "targets": {
     "leadToSignedPct": 8,
@@ -22,7 +22,7 @@
     "today": {
       "label": "Today",
       "from": 1792468800000,
-      "to": 1792491805746,
+      "to": 1792509668909,
       "current": {
         "totalLeads": 0,
         "contacted": 0,
@@ -184,8 +184,8 @@
         "speedMeasured": 0,
         "within5": 0,
         "within5Pct": 0,
-        "missedCalls": 1,
-        "missedNotReturned": 1,
+        "missedCalls": 0,
+        "missedNotReturned": 0,
         "qualified": 0,
         "qualifiedPct": null,
         "turnedAway": 0,
@@ -334,7 +334,7 @@
     "thisWeek": {
       "label": "This week",
       "from": 1792382400000,
-      "to": 1792491805746,
+      "to": 1792509668909,
       "current": {
         "totalLeads": 1,
         "contacted": 0,
@@ -343,8 +343,8 @@
         "speedMeasured": 0,
         "within5": 0,
         "within5Pct": 0,
-        "missedCalls": 1,
-        "missedNotReturned": 1,
+        "missedCalls": 0,
+        "missedNotReturned": 0,
         "qualified": 0,
         "qualifiedPct": null,
         "turnedAway": 0,
@@ -651,8 +651,8 @@
     },
     "last7": {
       "label": "Last 7 days",
-      "from": 1791887005746,
-      "to": 1792491805746,
+      "from": 1791904868909,
+      "to": 1792509668909,
       "current": {
         "totalLeads": 3,
         "contacted": 0,
@@ -661,8 +661,8 @@
         "speedMeasured": 0,
         "within5": 0,
         "within5Pct": 0,
-        "missedCalls": 1,
-        "missedNotReturned": 1,
+        "missedCalls": 0,
+        "missedNotReturned": 0,
         "qualified": 0,
         "qualifiedPct": null,
         "turnedAway": 0,
@@ -810,8 +810,8 @@
     },
     "last30": {
       "label": "Last 30 days",
-      "from": 1789899805746,
-      "to": 1792491805746,
+      "from": 1789917668909,
+      "to": 1792509668909,
       "current": {
         "totalLeads": 3,
         "contacted": 0,
@@ -820,8 +820,8 @@
         "speedMeasured": 0,
         "within5": 0,
         "within5Pct": 0,
-        "missedCalls": 2,
-        "missedNotReturned": 2,
+        "missedCalls": 1,
+        "missedNotReturned": 1,
         "qualified": 0,
         "qualifiedPct": null,
         "turnedAway": 0,
@@ -980,8 +980,8 @@
     },
     "last90": {
       "label": "Last 90 days",
-      "from": 1784715805746,
-      "to": 1792491805746,
+      "from": 1784733668909,
+      "to": 1792509668909,
       "current": {
         "totalLeads": 8,
         "contacted": 0,
@@ -990,8 +990,8 @@
         "speedMeasured": 0,
         "within5": 0,
         "within5Pct": 0,
-        "missedCalls": 15,
-        "missedNotReturned": 15,
+        "missedCalls": 14,
+        "missedNotReturned": 14,
         "qualified": 0,
         "qualifiedPct": null,
         "turnedAway": 0,
@@ -1145,7 +1145,7 @@
     "thisMonth": {
       "label": "This month",
       "from": 1790827200000,
-      "to": 1792491805746,
+      "to": 1792509668909,
       "current": {
         "totalLeads": 3,
         "contacted": 0,
@@ -1154,8 +1154,8 @@
         "speedMeasured": 0,
         "within5": 0,
         "within5Pct": 0,
-        "missedCalls": 1,
-        "missedNotReturned": 1,
+        "missedCalls": 0,
+        "missedNotReturned": 0,
         "qualified": 0,
         "qualifiedPct": null,
         "turnedAway": 0,
@@ -1485,7 +1485,7 @@
     "thisQuarter": {
       "label": "This quarter",
       "from": 1790827200000,
-      "to": 1792491805746,
+      "to": 1792509668909,
       "current": {
         "totalLeads": 3,
         "contacted": 0,
@@ -1494,8 +1494,8 @@
         "speedMeasured": 0,
         "within5": 0,
         "within5Pct": 0,
-        "missedCalls": 1,
-        "missedNotReturned": 1,
+        "missedCalls": 0,
+        "missedNotReturned": 0,
         "qualified": 0,
         "qualifiedPct": null,
         "turnedAway": 0,
@@ -1574,8 +1574,8 @@
         "speedMeasured": 0,
         "within5": 0,
         "within5Pct": null,
-        "missedCalls": 2,
-        "missedNotReturned": 2,
+        "missedCalls": 3,
+        "missedNotReturned": 3,
         "qualified": 0,
         "qualifiedPct": null,
         "turnedAway": 0,
