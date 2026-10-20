@@ -166,7 +166,11 @@ button.mini{cursor:pointer} button.mini:hover span:first-child{color:var(--link)
 .chip{display:inline-flex;padding:1px 7px;border-radius:3px;font-weight:600;font-size:11.5px;white-space:nowrap}
 .chip.good{background:var(--ok-bg);color:var(--ok-ink)} .chip.bad{background:var(--bad-bg);color:var(--bad-ink)} .chip.warn{background:var(--warn-bg);color:var(--warn-ink)} .chip.none{background:var(--track);color:var(--ink-2);font-weight:500}
 .pwfield{display:grid;gap:6px;margin:14px 0 8px}
-.pwfield input{background:var(--card);border:1px solid var(--rule);border-radius:6px;padding:9px 10px}
+.pwfield input{background:var(--card);border:1px solid var(--rule);border-radius:6px;padding:9px 40px 9px 10px;width:100%}
+.pwwrap{position:relative;display:block}
+.pweye{position:absolute;right:4px;top:50%;transform:translateY(-50%);background:none;border:0;padding:6px;border-radius:6px;cursor:pointer;color:var(--ink-3);line-height:0}
+.pweye:hover{color:var(--ink);background:var(--hover)}
+.pweye svg{width:18px;height:18px}
 
 /* how this works */
 .topline{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:2px}
@@ -699,11 +703,27 @@ function openUnlock(then) {
       <div class="def">Names, emails and phones are encrypted. Enter the team passphrase to see who's behind each number and to pick any dates.</div></div>
       <button class="close" data-close aria-label="Close">×</button></div>
     <form id="unlockForm">
-      <div class="pwfield"><input type="password" id="pw" autocomplete="current-password" placeholder="Team passphrase" required></div>
+      <div class="pwfield"><span class="pwwrap"><input type="password" id="pw" autocomplete="current-password" placeholder="Team passphrase" required>
+        <button type="button" class="pweye" id="pwEye" aria-label="Show passphrase" aria-pressed="false" title="Show passphrase"></button></span></div>
       <label class="hint"><input type="checkbox" id="remember" checked> Remember on this device</label>
       <div class="status-line" id="pwMsg"></div>
       <button class="btn primary" type="submit">Unlock</button>
     </form>`;
+  const EYE = {
+    show: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>',
+    hide: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 12s3.6-6.5 10-6.5c2 0 3.7.6 5.1 1.5M22 12s-3.6 6.5-10 6.5c-2 0-3.7-.6-5.1-1.5"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/><path d="M3 3l18 18"/></svg>',
+  };
+  const eye = $('pwEye');
+  eye.innerHTML = EYE.show;
+  eye.addEventListener('click', () => {
+    const on = $('pw').type === 'password';
+    $('pw').type = on ? 'text' : 'password';
+    eye.innerHTML = on ? EYE.hide : EYE.show;
+    eye.setAttribute('aria-pressed', String(on));
+    eye.setAttribute('aria-label', on ? 'Hide passphrase' : 'Show passphrase');
+    eye.title = on ? 'Hide passphrase' : 'Show passphrase';
+    $('pw').focus();
+  });
   $('scrim').classList.add('open');
   $('pw').focus();
   $('unlockForm').addEventListener('submit', async e => {
