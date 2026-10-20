@@ -60,10 +60,7 @@
       "proposal sent",
       "contract sent"
     ],
-    "signed": [
-      "signed client",
-      "lfmp client"
-    ]
+    "signed": []
   },
   "qualification": {
     "contactFields": [
