@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-21T06:30:59.817Z",
+  "generatedAt": "2026-10-21T12:18:51.753Z",
   "location": "Law Firm Marketing Pros",
   "targets": {
     "leadToSignedPct": 8,
@@ -22,7 +22,7 @@
     "today": {
       "label": "Today",
       "from": 1792555200000,
-      "to": 1792564259817,
+      "to": 1792585131753,
       "current": {
         "totalLeads": 0,
         "contacted": 0,
@@ -345,7 +345,7 @@
     "thisWeek": {
       "label": "This week",
       "from": 1792382400000,
-      "to": 1792564259817,
+      "to": 1792585131753,
       "current": {
         "totalLeads": 3,
         "contacted": 1,
@@ -672,8 +672,8 @@
     },
     "last7": {
       "label": "Last 7 days",
-      "from": 1791959459817,
-      "to": 1792564259817,
+      "from": 1791980331753,
+      "to": 1792585131753,
       "current": {
         "totalLeads": 5,
         "contacted": 1,
@@ -841,8 +841,8 @@
     },
     "last30": {
       "label": "Last 30 days",
-      "from": 1789972259817,
-      "to": 1792564259817,
+      "from": 1789993131753,
+      "to": 1792585131753,
       "current": {
         "totalLeads": 5,
         "contacted": 1,
@@ -1021,8 +1021,8 @@
     },
     "last90": {
       "label": "Last 90 days",
-      "from": 1784788259817,
-      "to": 1792564259817,
+      "from": 1784809131753,
+      "to": 1792585131753,
       "current": {
         "totalLeads": 10,
         "contacted": 1,
@@ -1191,7 +1191,7 @@
     "thisMonth": {
       "label": "This month",
       "from": 1790827200000,
-      "to": 1792564259817,
+      "to": 1792585131753,
       "current": {
         "totalLeads": 5,
         "contacted": 1,
@@ -1541,7 +1541,7 @@
     "thisQuarter": {
       "label": "This quarter",
       "from": 1790827200000,
-      "to": 1792564259817,
+      "to": 1792585131753,
       "current": {
         "totalLeads": 5,
         "contacted": 1,
