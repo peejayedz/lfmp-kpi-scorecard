@@ -93,6 +93,22 @@ const oppQualIds = (await optional('opportunity customFields', async () => {
 })) || [];
 const fieldVal = f => f?.fieldValueString ?? f?.fieldValue ?? f?.value ?? null;
 
+// First-touch marketing attribution, as GHL records it on the contact.
+// attributionSource = first touch, lastAttributionSource = most recent. We keep first touch
+// (where the lead originally came from) and carry the fields the channel rules need.
+function pickAttribution(c) {
+  const a = c.attributionSource || (Array.isArray(c.attributions) ? c.attributions[0] : null) || {};
+  const pick = (...keys) => { for (const k of keys) if (a[k]) return String(a[k]); return null; };
+  const out = {
+    referrer: pick('referrer', 'url'),
+    utmSource: pick('utmSource', 'utm_source', 'sessionSource'),
+    utmMedium: pick('utmMedium', 'utm_medium', 'medium'),
+    campaign: pick('campaign', 'utmCampaign', 'utm_campaign'),
+    gclid: pick('gclid'), msclkid: pick('msclkid'), fbclid: pick('fbclid'),
+  };
+  return Object.values(out).some(Boolean) ? out : null;
+}
+
 const contacts = {};
 async function loadContacts(ids) {
   const todo = [...new Set(ids)].filter(id => id && !contacts[id]);
@@ -105,6 +121,7 @@ async function loadContacts(ids) {
         id,
         name: c.contactName || [c.firstName, c.lastName].filter(Boolean).join(' ') || c.companyName || c.phone || 'Unnamed',
         company: c.companyName || null, email: c.email || null, phone: c.phone || null, tags: c.tags || [], source: c.source || null,
+        attribution: pickAttribution(c),
         stl: cf(fieldIds.stl), firstContacted: cf(fieldIds.firstContacted), method: cf(fieldIds.method),
         qualValues: (fieldIds.qual || []).map(cf).filter(v => v !== null && v !== ''),
       };
@@ -130,6 +147,7 @@ const leads = recentOpps.map(o => {
     tags: c.tags || o.contact?.tags || [],
     qualValues: [...(c.qualValues || []), ...(o.customFields || []).filter(f => oppQualIds.includes(f.id)).map(fieldVal)].filter(v => v !== null && v !== '').map(String),
     stlMin: Number.isNaN(stl) ? null : stl, firstContactedAt: c.firstContacted ? iso(c.firstContacted) : null, contactMethod: c.method || null,
+    attribution: c.attribution || null,
   };
 });
 
@@ -291,4 +309,6 @@ if (PASS) {
   await rm(new URL('details.enc.json', dataDir), { force: true });
   console.warn('DASHBOARD_PASSPHRASE not set: custom dates and drill-downs disabled, no contact data written.');
 }
+const withAttr = leads.filter(l => l.attribution).length;
+console.log(`Attribution coverage: ${withAttr} of ${leads.length} leads have marketing source data${leads.length ? ` (${Math.round((withAttr / leads.length) * 100)}%)` : ''}`);
 console.log(`Wrote data/kpis.json (${leads.length} leads, ${appointments?.length ?? 'n/a'} appointments, ${calls?.length ?? 'n/a'} calls)`);
