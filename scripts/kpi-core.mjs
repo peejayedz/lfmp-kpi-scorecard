@@ -114,6 +114,36 @@ export function adSpendFor(cfg, from, to) {
   return any ? Math.round(total) : null;
 }
 
+// ---- marketing channel (one place, used by the sync and the page) ----
+// Turns GHL's raw first-touch attribution into one named channel. Rules come from
+// config.channels so a new channel is a config edit, not a code change. First match wins.
+export function channelOf(lead, cfg) {
+  const a = lead.attribution;
+  const rules = (cfg.channels && cfg.channels.rules) || [];
+  const C = cfg.channels || {};
+  if (!a) return C.unknownLabel || 'Unknown';
+  const src = norm(a.utmSource), med = norm(a.utmMedium), ref = norm(a.referrer);
+  const host = (() => { try { return new URL(a.referrer).hostname.replace(/^www\./, ''); } catch { return ref; } })();
+  const ids = { gclid: !!a.gclid, msclkid: !!a.msclkid, fbclid: !!a.fbclid };
+  const paid = (C.paidMediums || ['cpc', 'ppc', 'paid', 'paidsearch', 'paid_search', 'display', 'video']).map(norm);
+  const isPaid = paid.some(p => med.replace(/[\s_-]/g, '') === p.replace(/[\s_-]/g, ''));
+  const any = (list, hay) => (list || []).some(x => hay.includes(norm(x)));
+  for (const r of rules) {
+    const needPaid = r.paidMedium === true;
+    if (needPaid && !isPaid && !(r.clickIds || []).some(k => ids[k])) continue;
+    if ((r.clickIds || []).some(k => ids[k])) return r.name;
+    if (r.sources && any(r.sources, src) && (!needPaid || isPaid)) return r.name;
+    if (r.referrerHosts && any(r.referrerHosts, host)) return r.name;
+  }
+  if (isPaid || src || host) {
+    const organic = (C.organic || []).find(o => any(o.referrerHosts, host) || any(o.sources || [], src));
+    if (organic && !isPaid) return organic.name;
+    if (host) return C.referralLabel || 'Referral';
+    if (src) return `${a.utmSource}`;
+  }
+  return C.directLabel || 'Direct';
+}
+
 // Builds every drill-down list for one period. Tiles are derived from these.
 // Funnel numbers follow the leads that came in during the dates (a cohort), so each step is a subset of the one before.
 export function buildLists(records, cfg, from, to) {
@@ -126,7 +156,7 @@ export function buildLists(records, cfg, from, to) {
 
   const leads = records.leads
     .filter(l => inRange(l.createdAt, from, to))
-    .map(l => { const c = { ...l, ...classify(l, cfg, consultsByContact, nowMs) }; c.contactStatus = contactStatus(c, callsByContact); return c; })
+    .map(l => { const c = { ...l, ...classify(l, cfg, consultsByContact, nowMs) }; c.contactStatus = contactStatus(c, callsByContact); c.channel = channelOf(c, cfg); return c; })
     .sort((a, b) => Date.parse(b.createdAt) - Date.parse(a.createdAt));
   const withStl = leads.filter(l => l.stlMin !== null && l.stlMin !== undefined);
 
@@ -167,6 +197,9 @@ export function summarize(L) {
   const avg = L.speedMeasured.length ? Math.round((L.speedMeasured.reduce((t, l) => t + l.stlMin, 0) / L.speedMeasured.length) * 10) / 10 : null;
   const src = {};
   for (const l of L.newLeads) { const s = l.source || 'Unknown'; (src[s] ||= [s, 0, 0]); src[s][1]++; if (l.signed) src[s][2]++; }
+  const ch = {};
+  for (const l of L.newLeads) { const c = l.channel || 'Unknown'; (ch[c] ||= [c, 0, 0]); ch[c][1]++; if (l.signed) ch[c][2]++; }
+  const attributed = L.newLeads.filter(l => l.attribution).length;
   const reasons = {};
   for (const l of L.turnedAway) reasons[l.turnedAwayReason] = (reasons[l.turnedAwayReason] || 0) + 1;
   return {
@@ -198,6 +231,9 @@ export function summarize(L) {
     adSpend: L.adSpend,
     costPerSigned: L.adSpend !== null && L.adSpend !== undefined && L.signed.length ? Math.round(L.adSpend / L.signed.length) : null,
     bySource: Object.values(src).sort((a, b) => b[1] - a[1] || b[2] - a[2]),
+    byChannel: Object.values(ch).sort((a, b) => b[1] - a[1] || b[2] - a[2]),
+    attributedLeads: attributed,
+    attributionPct: pct(attributed, n),
     funnel: [
       ['New leads', n, 'newLeads', null], ['Contacted', L.contacted.length, 'contacted', 'of leads'],
       ['Qualified', L.qualified.length, 'qualified', 'of contacted'], ['Consult booked', L.consultBooked.length, 'consultBooked', 'of qualified'],
