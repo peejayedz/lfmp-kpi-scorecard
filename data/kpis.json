@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-27T23:43:34.528Z",
+  "generatedAt": "2026-10-28T05:29:08.374Z",
   "location": "Law Firm Marketing Pros",
   "targets": {
     "leadToSignedPct": 8,
@@ -21,8 +21,8 @@
   "periods": {
     "today": {
       "label": "Today",
-      "from": 1793073600000,
-      "to": 1793144614528,
+      "from": 1793160000000,
+      "to": 1793165348374,
       "current": {
         "totalLeads": 0,
         "contacted": 0,
@@ -101,13 +101,13 @@
         ]
       },
       "previous": {
-        "totalLeads": 1,
+        "totalLeads": 0,
         "contacted": 0,
-        "contactRatePct": 0,
+        "contactRatePct": null,
         "speedToLeadAvgMin": null,
         "speedMeasured": 0,
         "within5": 0,
-        "within5Pct": 0,
+        "within5Pct": null,
         "missedCalls": 0,
         "missedNotReturned": 0,
         "qualified": 0,
@@ -125,29 +125,17 @@
         "sentRatePct": null,
         "signed": 0,
         "signRatePct": null,
-        "leadToSignedPct": 0,
+        "leadToSignedPct": null,
         "adSpend": null,
         "costPerSigned": null,
-        "bySource": [
-          [
-            "Calendly",
-            1,
-            0
-          ]
-        ],
-        "byChannel": [
-          [
-            "Unknown",
-            1,
-            0
-          ]
-        ],
+        "bySource": [],
+        "byChannel": [],
         "attributedLeads": 0,
-        "attributionPct": 0,
+        "attributionPct": null,
         "funnel": [
           [
             "New leads",
-            1,
+            0,
             "newLeads",
             null
           ],
@@ -192,9 +180,86 @@
     },
     "yesterday": {
       "label": "Yesterday",
-      "from": 1792987200000,
-      "to": 1793073600000,
+      "from": 1793073600000,
+      "to": 1793160000000,
       "current": {
+        "totalLeads": 0,
+        "contacted": 0,
+        "contactRatePct": null,
+        "speedToLeadAvgMin": null,
+        "speedMeasured": 0,
+        "within5": 0,
+        "within5Pct": null,
+        "missedCalls": 0,
+        "missedNotReturned": 0,
+        "qualified": 0,
+        "qualifiedPct": null,
+        "turnedAway": 0,
+        "turnedAwayReasons": [],
+        "consultBooked": 0,
+        "bookRatePct": null,
+        "bookedPast": 0,
+        "consultHeld": 0,
+        "showRatePct": null,
+        "noShows": 0,
+        "noShowPct": null,
+        "agreementSent": 0,
+        "sentRatePct": null,
+        "signed": 0,
+        "signRatePct": null,
+        "leadToSignedPct": null,
+        "adSpend": null,
+        "costPerSigned": null,
+        "bySource": [],
+        "byChannel": [],
+        "attributedLeads": 0,
+        "attributionPct": null,
+        "funnel": [
+          [
+            "New leads",
+            0,
+            "newLeads",
+            null
+          ],
+          [
+            "Contacted",
+            0,
+            "contacted",
+            "of leads"
+          ],
+          [
+            "Qualified",
+            0,
+            "qualified",
+            "of contacted"
+          ],
+          [
+            "Consult booked",
+            0,
+            "consultBooked",
+            "of qualified"
+          ],
+          [
+            "Consult held",
+            0,
+            "consultHeld",
+            "of booked"
+          ],
+          [
+            "Agreement sent",
+            0,
+            "agreementSent",
+            "of held"
+          ],
+          [
+            "Signed",
+            0,
+            "signed",
+            "of sent"
+          ]
+        ]
+      },
+      "previous": {
         "totalLeads": 1,
         "contacted": 0,
         "contactRatePct": 0,
@@ -242,83 +307,6 @@
           [
             "New leads",
             1,
-            "newLeads",
-            null
-          ],
-          [
-            "Contacted",
-            0,
-            "contacted",
-            "of leads"
-          ],
-          [
-            "Qualified",
-            0,
-            "qualified",
-            "of contacted"
-          ],
-          [
-            "Consult booked",
-            0,
-            "consultBooked",
-            "of qualified"
-          ],
-          [
-            "Consult held",
-            0,
-            "consultHeld",
-            "of booked"
-          ],
-          [
-            "Agreement sent",
-            0,
-            "agreementSent",
-            "of held"
-          ],
-          [
-            "Signed",
-            0,
-            "signed",
-            "of sent"
-          ]
-        ]
-      },
-      "previous": {
-        "totalLeads": 0,
-        "contacted": 0,
-        "contactRatePct": null,
-        "speedToLeadAvgMin": null,
-        "speedMeasured": 0,
-        "within5": 0,
-        "within5Pct": null,
-        "missedCalls": 0,
-        "missedNotReturned": 0,
-        "qualified": 0,
-        "qualifiedPct": null,
-        "turnedAway": 0,
-        "turnedAwayReasons": [],
-        "consultBooked": 0,
-        "bookRatePct": null,
-        "bookedPast": 0,
-        "consultHeld": 0,
-        "showRatePct": null,
-        "noShows": 0,
-        "noShowPct": null,
-        "agreementSent": 0,
-        "sentRatePct": null,
-        "signed": 0,
-        "signRatePct": null,
-        "leadToSignedPct": null,
-        "adSpend": null,
-        "costPerSigned": null,
-        "bySource": [],
-        "byChannel": [],
-        "attributedLeads": 0,
-        "attributionPct": null,
-        "funnel": [
-          [
-            "New leads",
-            0,
             "newLeads",
             null
           ],
@@ -364,7 +352,7 @@
     "thisWeek": {
       "label": "This week",
       "from": 1792987200000,
-      "to": 1793144614528,
+      "to": 1793165348374,
       "current": {
         "totalLeads": 1,
         "contacted": 0,
@@ -759,8 +747,8 @@
     },
     "last7": {
       "label": "Last 7 days",
-      "from": 1792539814528,
-      "to": 1793144614528,
+      "from": 1792560548374,
+      "to": 1793165348374,
       "current": {
         "totalLeads": 1,
         "contacted": 0,
@@ -957,8 +945,8 @@
     },
     "last30": {
       "label": "Last 30 days",
-      "from": 1790552614528,
-      "to": 1793144614528,
+      "from": 1790573348374,
+      "to": 1793165348374,
       "current": {
         "totalLeads": 6,
         "contacted": 1,
@@ -1160,8 +1148,8 @@
     },
     "last90": {
       "label": "Last 90 days",
-      "from": 1785368614528,
-      "to": 1793144614528,
+      "from": 1785389348374,
+      "to": 1793165348374,
       "current": {
         "totalLeads": 11,
         "contacted": 1,
@@ -1274,8 +1262,8 @@
         "speedMeasured": 0,
         "within5": 0,
         "within5Pct": null,
-        "missedCalls": 3,
-        "missedNotReturned": 3,
+        "missedCalls": 12,
+        "missedNotReturned": 12,
         "qualified": 0,
         "qualifiedPct": null,
         "turnedAway": 0,
@@ -1347,7 +1335,7 @@
     "thisMonth": {
       "label": "This month",
       "from": 1790827200000,
-      "to": 1793144614528,
+      "to": 1793165348374,
       "current": {
         "totalLeads": 6,
         "contacted": 1,
@@ -1738,7 +1726,7 @@
     "thisQuarter": {
       "label": "This quarter",
       "from": 1790827200000,
-      "to": 1793144614528,
+      "to": 1793165348374,
       "current": {
         "totalLeads": 6,
         "contacted": 1,
@@ -2027,8 +2015,8 @@
         "speedMeasured": 0,
         "within5": 0,
         "within5Pct": null,
-        "missedCalls": 0,
-        "missedNotReturned": 0,
+        "missedCalls": 11,
+        "missedNotReturned": 11,
         "qualified": 0,
         "qualifiedPct": null,
         "turnedAway": 0,
