@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-30T00:16:21.503Z",
+  "generatedAt": "2026-10-30T06:22:38.485Z",
   "location": "Law Firm Marketing Pros",
   "targets": {
     "leadToSignedPct": 8,
@@ -21,8 +21,8 @@
   "periods": {
     "today": {
       "label": "Today",
-      "from": 1793246400000,
-      "to": 1793319381503,
+      "from": 1793332800000,
+      "to": 1793341358485,
       "current": {
         "totalLeads": 0,
         "contacted": 0,
@@ -180,8 +180,8 @@
     },
     "yesterday": {
       "label": "Yesterday",
-      "from": 1793160000000,
-      "to": 1793246400000,
+      "from": 1793246400000,
+      "to": 1793332800000,
       "current": {
         "totalLeads": 0,
         "contacted": 0,
@@ -340,7 +340,7 @@
     "thisWeek": {
       "label": "This week",
       "from": 1792987200000,
-      "to": 1793319381503,
+      "to": 1793341358485,
       "current": {
         "totalLeads": 1,
         "contacted": 0,
@@ -735,8 +735,8 @@
     },
     "last7": {
       "label": "Last 7 days",
-      "from": 1792714581503,
-      "to": 1793319381503,
+      "from": 1792736558485,
+      "to": 1793341358485,
       "current": {
         "totalLeads": 1,
         "contacted": 0,
@@ -933,8 +933,8 @@
     },
     "last30": {
       "label": "Last 30 days",
-      "from": 1790727381503,
-      "to": 1793319381503,
+      "from": 1790749358485,
+      "to": 1793341358485,
       "current": {
         "totalLeads": 6,
         "contacted": 1,
@@ -1136,8 +1136,8 @@
     },
     "last90": {
       "label": "Last 90 days",
-      "from": 1785543381503,
-      "to": 1793319381503,
+      "from": 1785565358485,
+      "to": 1793341358485,
       "current": {
         "totalLeads": 11,
         "contacted": 1,
@@ -1323,7 +1323,7 @@
     "thisMonth": {
       "label": "This month",
       "from": 1790827200000,
-      "to": 1793319381503,
+      "to": 1793341358485,
       "current": {
         "totalLeads": 6,
         "contacted": 1,
@@ -1714,7 +1714,7 @@
     "thisQuarter": {
       "label": "This quarter",
       "from": 1790827200000,
-      "to": 1793319381503,
+      "to": 1793341358485,
       "current": {
         "totalLeads": 6,
         "contacted": 1,
