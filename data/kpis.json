@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-31T15:16:20.177Z",
+  "generatedAt": "2026-10-31T19:31:37.157Z",
   "location": "Law Firm Marketing Pros",
   "targets": {
     "leadToSignedPct": 8,
@@ -22,7 +22,7 @@
     "today": {
       "label": "Today",
       "from": 1793419200000,
-      "to": 1793459780177,
+      "to": 1793475097157,
       "current": {
         "totalLeads": 0,
         "contacted": 0,
@@ -340,7 +340,7 @@
     "thisWeek": {
       "label": "This week",
       "from": 1792987200000,
-      "to": 1793459780177,
+      "to": 1793475097157,
       "current": {
         "totalLeads": 1,
         "contacted": 0,
@@ -735,8 +735,8 @@
     },
     "last7": {
       "label": "Last 7 days",
-      "from": 1792854980177,
-      "to": 1793459780177,
+      "from": 1792870297157,
+      "to": 1793475097157,
       "current": {
         "totalLeads": 1,
         "contacted": 0,
@@ -933,8 +933,8 @@
     },
     "last30": {
       "label": "Last 30 days",
-      "from": 1790867780177,
-      "to": 1793459780177,
+      "from": 1790883097157,
+      "to": 1793475097157,
       "current": {
         "totalLeads": 6,
         "contacted": 1,
@@ -1040,7 +1040,7 @@
         ]
       },
       "previous": {
-        "totalLeads": 2,
+        "totalLeads": 1,
         "contacted": 0,
         "contactRatePct": 0,
         "speedToLeadAvgMin": null,
@@ -1072,17 +1072,12 @@
             "Unknown",
             1,
             0
-          ],
-          [
-            "Calendly",
-            1,
-            0
           ]
         ],
         "byChannel": [
           [
             "Unknown",
-            2,
+            1,
             0
           ]
         ],
@@ -1091,7 +1086,7 @@
         "funnel": [
           [
             "New leads",
-            2,
+            1,
             "newLeads",
             null
           ],
@@ -1136,8 +1131,8 @@
     },
     "last90": {
       "label": "Last 90 days",
-      "from": 1785683780177,
-      "to": 1793459780177,
+      "from": 1785699097157,
+      "to": 1793475097157,
       "current": {
         "totalLeads": 11,
         "contacted": 1,
@@ -1323,7 +1318,7 @@
     "thisMonth": {
       "label": "This month",
       "from": 1790827200000,
-      "to": 1793459780177,
+      "to": 1793475097157,
       "current": {
         "totalLeads": 6,
         "contacted": 1,
@@ -1714,7 +1709,7 @@
     "thisQuarter": {
       "label": "This quarter",
       "from": 1790827200000,
-      "to": 1793459780177,
+      "to": 1793475097157,
       "current": {
         "totalLeads": 6,
         "contacted": 1,
