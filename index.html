@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
-<title>Intake &amp; Signed Clients Scorecard · Law Firm Marketing Pros</title>
+<title>LeadPro KPI Scorecard</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖️</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -80,6 +80,13 @@ h1{font-family:var(--serif);font-weight:600;font-size:clamp(24px,3.4vw,30px);lin
 .cmp-line{font-size:12px;color:var(--ink-2);margin-top:4px;display:flex;flex-wrap:wrap;gap:4px 12px;align-items:center}
 .cmp-line b{color:var(--ink)} .cmp-line .off{background:none;border:0;padding:0;color:var(--link);cursor:pointer;font-size:12px}
 .status-line{font-size:12.5px;color:var(--ink-2);min-height:18px;margin:8px 0 0}
+.notice{display:flex;gap:12px;align-items:flex-start;background:var(--warn-bg);border:1px solid var(--warn-line);color:var(--warn-ink);border-radius:8px;padding:12px 14px;margin:14px 0 0;font-size:13.5px;line-height:1.45}
+.notice svg{width:18px;height:18px;flex:0 0 auto;margin-top:2px}
+.notice b{display:block;margin-bottom:2px}
+.stage h2[data-tip],.funnel h2[data-tip]{cursor:help}
+.label[data-tip]{cursor:help;text-decoration:underline dotted var(--ink-3);text-underline-offset:3px}
+.label[data-tip]:hover{color:var(--ink)}
+.tip{max-width:320px;line-height:1.45}
 
 /* executive summary */
 .summary{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--rule);border-radius:6px;margin:10px 0 22px}
@@ -135,6 +142,10 @@ button.mini{cursor:pointer} button.mini:hover span:first-child{color:var(--link)
 .src td{padding:7px 6px;border-bottom:1px solid var(--rule)}
 .src .r{text-align:right} .src td.barcell{width:78px;padding-right:12px}
 .sbar{height:5px;background:var(--bar-soft);border-radius:2px}
+.src tr.sep td{border-top:2px solid var(--rule);padding-top:11px}
+.src tfoot td{border-bottom:0;color:var(--ink-3);font-size:12px;padding-top:10px}
+.disc{font-size:11.5px;color:var(--ink-3);line-height:1.5;margin:10px 0 0;max-width:62ch}
+.cov{font-size:12px;color:var(--ink-2);margin:0 0 10px}
 .src tr[data-drill]{cursor:pointer} .src tr[data-drill]:hover td{background:var(--hover)}
 .howto ul{margin:0;padding-left:16px;font-size:13px} .howto li{margin:3px 0}
 .foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:11.5px;color:var(--ink-3);margin-top:22px}
@@ -210,7 +221,7 @@ button.mini{cursor:pointer} button.mini:hover span:first-child{color:var(--link)
 </head>
 <body>
 <main class="wrap"><div class="card">
-  <div class="topline"><p class="brandline"><b id="brand">LeadPro.Legal</b> client dashboard</p>
+  <div class="topline"><p class="brandline"><b id="brand">LeadPro</b> client dashboard</p>
     <span style="display:flex;gap:8px;align-items:center">
     <button class="btn themebtn" id="themeBtn" title="Switch between automatic, light and dark"></button>
     <button class="btn howbtn" id="howBtn" aria-haspopup="dialog">
@@ -219,7 +230,7 @@ button.mini{cursor:pointer} button.mini:hover span:first-child{color:var(--link)
       </button></span></div>
   <header class="head">
     <div class="titles">
-      <h1>Intake &amp; Signed Clients Scorecard</h1>
+      <h1 id="pageTitle">KPI Scorecard</h1>
       <p class="sub" id="updated">Loading…</p>
       <div class="cmp-line" id="cmpLine" hidden></div>
     </div>
@@ -264,10 +275,11 @@ button.mini{cursor:pointer} button.mini:hover span:first-child{color:var(--link)
       </div>
     </div>
   </header>
+  <div id="notice" hidden></div>
   <div class="status-line" id="statusLine" aria-live="polite"></div>
   <div class="summary" id="exec"></div>
   <div id="app"></div>
-  <footer class="foot"><span id="notes"></span><span id="brandFoot">LeadPro.Legal by Law Firm Marketing Pros</span></footer>
+  <footer class="foot"><span id="notes"></span><span id="brandFoot">LeadPro</span></footer>
 </div></main>
 
 <div class="scrim" id="scrim"><div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle"></div></div>
@@ -409,6 +421,37 @@ const aName = () => cmp.on && sel.key === 'custom' ? 'Period A' : range.label;
 const bShort = () => bName().replace(/, same (point|time)$/, '');
 const isoDay = ms => new Date(ms).toLocaleDateString('en-CA', { timeZone: TZ() });
 
+// ---------- plain-language definitions (hover on any metric label) ----------
+const DEFS = {
+  leadToSigned: 'Of the leads that came in during these dates, the share that signed. The headline number for pipeline health.',
+  totalLeads: 'Opportunities created in the selected dates. Every other number is a share of this one.',
+  speedToLeadAvgMin: 'Average minutes from a lead arriving to the first outbound call, counting business hours only. Emails and texts do not stop the clock.',
+  within5Pct: 'Share of new leads called within 5 minutes. Leads never called count as not within 5 minutes.',
+  missedNotReturned: 'Inbound calls nobody answered that still have no call back. Each one is a lead that may be gone.',
+  contactRatePct: 'Share of new leads reached at all: a reply on any channel, a connected call, a booking, or a contacted stage.',
+  qualified: 'Leads confirmed as a real prospect: marked qualified, in a qualified stage, or further along.',
+  turnedAway: 'Leads the firm declined, referred out, or marked lost, grouped by the reason recorded.',
+  bookRatePct: 'Of qualified leads, the share that booked a consultation.',
+  showRatePct: 'Of consultations that should have happened by now, the share that took place.',
+  noShowPct: 'Of consultations that should have happened by now, the share where the lead did not show.',
+  agreementSent: 'Leads sent a fee agreement after their consultation.',
+  signRatePct: 'Of agreements sent, the share that came back signed.',
+  signed: 'Leads who became clients: the opportunity is marked Won or sits in a signed stage.',
+  costPerSigned: 'Monthly ad spend from settings divided by signed clients in these dates.',
+  secLeads: 'How many enquiries came in and how quickly someone picked up the phone. Speed here drives everything below.',
+  secIntake: 'Whether leads were actually reached, which ones were a real fit, and why the rest were turned away.',
+  secConsults: 'How well qualified leads convert into booked consultations, and how many of those consultations happen.',
+  secSigned: 'Whether consultations turn into fee agreements, and whether those agreements get signed.',
+  secFunnel: 'Each bar is the number of leads from these dates that reached that step. Each step is part of the one above it, so the gaps show where leads are lost.',
+};
+function renderNotice() {
+  const N = cfg.notice || {};
+  const el = $('notice');
+  if (!N.show) { el.hidden = true; el.innerHTML = ''; return; }
+  el.hidden = false;
+  el.innerHTML = `<div class="notice" role="status"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18.5A2 2 0 0 0 3.5 21.5h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg><div>${N.title ? `<b>${esc(N.title)}</b>` : ''}${esc(N.text || '')}</div></div>`;
+}
+
 // ---------- building blocks ----------
 function badge(value, goal, { lower = false, denom = Infinity, suffix = '' } = {}) {
   if (goal === undefined || goal === null) return '';
@@ -428,24 +471,27 @@ function metric({ k, label, big, small = '', goal = '', drill, priorCount = fals
     extra = `<span class="cmpv"><span class="sw prev"></span> ${esc(bShort())}: <b>${pvTxt}</b> · <span class="chg ${ch.state}">${esc(ch.text)}</span></span>`;
   } else if (priorCount && prev && prev[k] !== null && prev[k] !== undefined) small = `vs ${fmt.n(prev[k])} prior`;
   return `<${tag} class="metric" ${can ? `data-drill="${drill}" aria-label="${esc(label)}: view the list"` : ''}>
-    <p class="label">${esc(label)}</p>
+    <p class="label" ${DEFS[k] ? `data-tip="${esc(DEFS[k])}"` : ''}>${esc(label)}</p>
     <span class="mv"><b>${big}</b>${small ? `<small>${small}</small>` : ''}</span>${goal}${extra}</${tag}>`;
 }
 
 // ---------- render ----------
 function render() {
   const T = pub.targets, c = cur, n = c.totalLeads;
-  $('brand').textContent = cfg.brand || 'LeadPro.Legal';
+  $('brand').textContent = cfg.brand || 'LeadPro';
+  $('pageTitle').textContent = cfg.title || `${cfg.locationName} KPI Scorecard`;
+  document.title = cfg.title || `${cfg.locationName} KPI Scorecard`;
   $('brandFoot').textContent = cfg.brandFooter || '';
   $('rangeLabel').textContent = range.label;
   $('sampleChip').hidden = !pub.isSample;
-  $('lockBtn').hidden = !(pub.detailsAvailable || records);
+  $('lockBtn').hidden = cfg.showUnlockButton === false || !(pub.detailsAvailable || records);
   $('lockBtn').textContent = records ? '🔓 Lock names' : '🔒 Unlock names';
   $('cmpBtn').classList.toggle('on', cmp.on);
   $('cmpBtnLabel').textContent = cmp.on ? 'Comparing' : 'Compare to prior';
   const ts = new Date((records || pub).generatedAt);
   $('updated').textContent = `${cfg.locationName}, ${sel.key === 'custom' ? range.label : `${range.label.toLowerCase()} (${fmtSpan(range.from, range.to)})`}. Data as of ${ts.toLocaleString('en-US', { timeZone: TZ(), dateStyle: 'medium', timeStyle: 'short' })}; syncs from GoHighLevel a few times a day.`;
   renderCompareLine();
+  renderNotice();
 
   const drill = canDrill();
   const funnelRows = c.funnel.map(([label, v, key, of], i) => {
@@ -465,11 +511,17 @@ function render() {
     return `<${tag} class="mini" ${drill ? `data-drill="reason:${esc(r)}"` : ''}><span>${esc(r)}</span><span class="track"><span class="fill soft" style="display:block;width:${(v / rmax) * 100}%"></span></span><span class="n">${v}</span></${tag}>`;
   }).join('') : '<p class="hint">No turned-away leads in these dates.</p>';
 
-  const srcMax = Math.max(1, ...(c.bySource || []).map(s => s[1]));
-  const srcRows = (c.bySource || []).map(([s, l, sg]) => `<tr ${drill ? `data-drill="source:${esc(s)}"` : ''}>
-      <td class="barcell"><div class="sbar" style="width:${(l / srcMax) * 100}%"></div></td><td>${esc(s)}</td>
-      <td class="r">${l}</td><td class="r">${sg}</td><td class="r${l < MIN() ? ' muted' : ''}">${l < MIN() ? 'Too few' : Math.round((sg / l) * 100) + '%'}</td></tr>`).join('')
-    || '<tr><td colspan="5" class="muted">No leads in these dates.</td></tr>';
+  const NM = cfg.channels?.nonMarketing || [];
+  const allCh = c.byChannel || [];
+  const chans = allCh.filter(r => !NM.includes(r[0])), other = allCh.filter(r => NM.includes(r[0]));
+  const chMax = Math.max(1, ...allCh.map(s => s[1]));
+  const chRow = ([s, l, sg], sep) => `<tr class="${sep ? 'sep' : ''}" ${drill ? `data-drill="channel:${esc(s)}"` : ''}>
+      <td class="barcell"><div class="sbar" style="width:${(l / chMax) * 100}%"></div></td><td>${esc(s)}</td>
+      <td class="r">${l}</td><td class="r">${n ? Math.round((l / n) * 100) : 0}%</td>
+      <td class="r">${sg}</td><td class="r${l < MIN() ? ' muted' : ''}">${l < MIN() ? 'Too few' : Math.round((sg / l) * 100) + '%'}</td></tr>`;
+  const srcRows = allCh.length
+    ? chans.map(r => chRow(r, false)).join('') + other.map((r, i) => chRow(r, i === 0 && chans.length > 0)).join('')
+    : '<tr><td colspan="6" class="muted">No leads in these dates.</td></tr>';
 
   const cps = c.costPerSigned !== null && c.costPerSigned !== undefined
     ? `<p class="cpc">Cost per signed client: <b>${fmt.usd(c.costPerSigned)}</b><br>based on ${fmt.usd(c.adSpend)} in ad spend</p>`
@@ -479,34 +531,34 @@ function render() {
   $('app').innerHTML = `
   <div class="hero">
     <div class="left">
-      <p class="label">Lead → signed client</p>
+      <p class="label" data-tip="${esc(DEFS.leadToSigned)}">Lead → signed client</p>
       <p class="big">${fmt.pct1(c.leadToSignedPct)}</p>
       <p class="strong">${drill ? `<a class="lnk" href="#" role="button" data-drill="leadToSigned">${c.signed} of ${n} new leads became clients</a>` : `${c.signed} of ${n} new leads became clients`}</p>
       ${badge(c.leadToSignedPct, T.leadToSignedPct, { denom: n, suffix: '%' })}
       ${cmp.on ? `<span class="cmpv"><span class="sw prev"></span> ${esc(bShort())}: <b>${fmt.pct1(prev?.leadToSignedPct)}</b> · <span class="chg ${change('leadToSignedPct', c.leadToSignedPct, prev?.leadToSignedPct).state}">${esc(change('leadToSignedPct', c.leadToSignedPct, prev?.leadToSignedPct).text)}</span></span>` : ''}
       ${cps}
     </div>
-    <div class="funnel"><h2>Where leads drop off</h2>${funnelRows}</div>
+    <div class="funnel"><h2 data-tip="${esc(DEFS.secFunnel)}">Where leads drop off</h2>${funnelRows}</div>
   </div>
 
   <div class="stages">
-    <section class="stage"><h2><span>1</span>Leads in</h2>
+    <section class="stage"><h2 data-tip="${esc(DEFS.secLeads)}"><span>1</span>Leads in</h2>
       ${metric({ k: 'totalLeads', label: 'New leads', big: fmt.n(n), drill: 'newLeads', priorCount: true })}
       ${metric({ k: 'speedToLeadAvgMin', label: 'Speed to first contact', big: fmt.min(c.speedToLeadAvgMin), drill: 'speed', goal: badge(c.speedToLeadAvgMin, T.speedToLeadMin, { lower: true, denom: c.speedMeasured, suffix: ' min' }) })}
       ${metric({ k: 'within5Pct', label: 'Contacted within 5 min', big: fmt.pct(c.within5Pct), small: `${c.within5} of ${n}`, drill: 'within5', goal: badge(c.within5Pct, T.within5Pct, { denom: n, suffix: '%' }) })}
       ${metric({ k: 'missedNotReturned', label: 'Missed calls not returned', big: fmt.n(c.missedNotReturned), drill: 'missedNotReturned', priorCount: true })}
     </section>
-    <section class="stage"><h2><span>2</span>Intake</h2>
+    <section class="stage"><h2 data-tip="${esc(DEFS.secIntake)}"><span>2</span>Intake</h2>
       ${metric({ k: 'contactRatePct', label: 'Contact rate', big: fmt.pct(c.contactRatePct), small: `${c.contacted} of ${n}`, drill: 'contactRate', goal: badge(c.contactRatePct, T.contactRatePct, { denom: n, suffix: '%' }) })}
       ${metric({ k: 'qualified', label: 'Qualified leads', big: fmt.n(c.qualified), small: c.qualifiedPct === null ? '' : `${fmt.pct(c.qualifiedPct)} of contacted`, drill: 'qualified' })}
-      <div class="metric"><p class="label">${drill ? '<a class="lnk" href="#" role="button" data-drill="turnedAway">Why leads were turned away</a>' : 'Why leads were turned away'}</p>${reasonRows}</div>
+      <div class="metric"><p class="label" data-tip="${esc(DEFS.turnedAway)}">${drill ? '<a class="lnk" href="#" role="button" data-drill="turnedAway">Why leads were turned away</a>' : 'Why leads were turned away'}</p>${reasonRows}</div>
     </section>
-    <section class="stage"><h2><span>3</span>Consultations</h2>
+    <section class="stage"><h2 data-tip="${esc(DEFS.secConsults)}"><span>3</span>Consultations</h2>
       ${metric({ k: 'bookRatePct', label: 'Qualified → consult booked', big: fmt.pct(c.bookRatePct), small: `${c.consultBooked} of ${c.qualified}`, drill: 'bookRate', goal: badge(c.bookRatePct, T.bookRatePct, { denom: c.qualified, suffix: '%' }) })}
       ${metric({ k: 'showRatePct', label: 'Consult show rate', big: fmt.pct(c.showRatePct), small: `${c.consultHeld} of ${c.bookedPast}`, drill: 'showRate', goal: badge(c.showRatePct, T.showRatePct, { denom: c.bookedPast, suffix: '%' }) })}
       ${metric({ k: 'noShowPct', label: 'Consult no-show rate', big: fmt.pct(c.noShowPct), small: `${c.noShows} of ${c.bookedPast}`, drill: 'noShowRate', goal: badge(c.noShowPct, T.noShowPct, { lower: true, denom: c.bookedPast, suffix: '% or less' }) })}
     </section>
-    <section class="stage"><h2><span>4</span>Signed clients</h2>
+    <section class="stage"><h2 data-tip="${esc(DEFS.secSigned)}"><span>4</span>Signed clients</h2>
       ${metric({ k: 'agreementSent', label: 'Agreements sent', big: fmt.n(c.agreementSent), small: c.sentRatePct === null ? '' : `${fmt.pct(c.sentRatePct)} of consults held`, drill: 'agreementSent', goal: badge(c.sentRatePct, T.sentRatePct, { denom: c.consultHeld, suffix: '%' }) })}
       ${metric({ k: 'signRatePct', label: 'Agreement → signed', big: fmt.pct(c.signRatePct), small: `${c.signed} of ${c.agreementSent}`, drill: 'signRate', goal: badge(c.signRatePct, T.signRatePct, { denom: c.agreementSent, suffix: '%' }) })}
       ${metric({ k: 'signed', label: 'Signed clients', big: fmt.n(c.signed), drill: 'signed', priorCount: true })}
@@ -515,8 +567,12 @@ function render() {
 
   <div class="bottom">
     <section>
-      <h2>Leads and signed clients by source</h2>
-      <div class="srcwrap"><table class="src"><thead><tr><th colspan="2">Source</th><th class="r">Leads</th><th class="r">Signed</th><th class="r">Lead → signed</th></tr></thead><tbody>${srcRows}</tbody></table></div>
+      <h2>Where leads come from</h2>
+      <p class="cov">${c.attributedLeads ?? 0} of ${n} leads have a marketing source we could identify${n ? ` (${c.attributionPct ?? 0}%)` : ''}.</p>
+      <div class="srcwrap"><table class="src"><thead><tr><th colspan="2">Channel</th><th class="r">Leads</th><th class="r">Share</th><th class="r">Signed</th><th class="r">Lead → signed</th></tr></thead>
+        <tbody>${srcRows}</tbody>
+        <tfoot><tr><td colspan="6">Share is of all ${n} leads, including those with no identifiable source.</td></tr></tfoot></table></div>
+      <p class="disc">${esc((cfg.attributionDisclaimer || '').split('. ')[0])}. <button class="lnk" id="discMore">Read more about attribution</button></p>
     </section>
     <section class="howto">
       <h2>How to read this scorecard</h2>
@@ -524,7 +580,7 @@ function render() {
         <li>Each rate shows the actual count beside it, so small numbers are never hidden behind a percentage.</li>
         <li>The funnel follows the leads that came in during the selected dates, so each step is part of the one before.</li>
         <li>A rate based on fewer than ${MIN()} leads shows “Too few” instead of a goal badge.</li>
-        <li>${drill ? 'Click any number, funnel step or source to see the people behind it.' : 'Names and custom dates are available after unlocking.'}</li>
+        <li>${drill ? 'Click any number, funnel step or source to see the people behind it.' : cfg.showUnlockButton === false ? 'Open this scorecard from inside your CRM to see the people behind each number.' : 'Names and custom dates are available after unlocking.'}</li>
       </ul>
     </section>
   </div>`;
@@ -602,9 +658,11 @@ function execSummary() {
   if (focus.length < 2 && top && c.turnedAway >= MIN() && F.turnedAway) focus.push(F.turnedAway);
   if (!focus.length) focus.push('Every goal is on track. Keep the same follow-up rhythm and watch lead volume.');
   const li = (arr, empty) => arr.length ? `<ul>${arr.map(x => `<li>${x}</li>`).join('')}</ul>` : `<p class="none">${empty}</p>`;
+  const scorable = scored.length, totalGoals = GOALS.filter(([, , gk]) => t[gk] !== undefined).length;
+  const coverage = scorable < totalGoals ? ` ${scorable} of ${totalGoals} metrics have enough data to score; the other ${totalGoals - scorable} are waiting on data.` : '';
   $('exec').innerHTML = n === 0
     ? `<section style="--c:var(--dot-focus);grid-column:1/-1"><h2>No new leads in these dates yet</h2><p class="none">Pick a wider date range to see the scorecard.</p></section>`
-    : `<section style="--c:var(--dot-good)"><h2>Going well</h2>${li(good, 'Nothing above goal yet.')}</section>
+    : `<section style="--c:var(--dot-good)"><h2>Going well</h2>${li(good, `No metric is above goal.${esc(coverage)}`)}</section>
        <section style="--c:var(--dot-bad)"><h2>Needs attention</h2>${li(bad, 'Nothing below goal.')}</section>
        <section style="--c:var(--dot-focus)"><h2>Recommended focus</h2>${li(focus.slice(0, 2).map(esc), '')}</section>`;
 }
@@ -619,6 +677,12 @@ function openDrill(key) {
     const s = key.slice(7);
     def = { ...DRILLS.newLeads, title: `Leads from ${s}`, def: `New leads in the selected dates with source "${s}".` };
     rows = lists.newLeads.filter(l => (l.source || 'Unknown') === s);
+  } else if (key.startsWith('channel:')) {
+    const ch = key.slice(8);
+    def = { ...DRILLS.newLeads, title: `Leads from ${ch}`, def: `New leads in the selected dates whose first-touch marketing source was classified as "${ch}".`,
+      cols: [col.name, col.company, col.email, col.phone, { label: 'Channel', key: 'channel', type: 'badge', filter: 'channel' }, { label: 'Campaign', key: 'campaign' }, { label: 'Referrer', key: 'referrer' }, col.created, col.step] };
+    rows = lists.newLeads.filter(l => (l.channel || 'Unknown source') === ch)
+      .map(l => ({ ...l, campaign: l.attribution?.campaign || null, referrer: l.attribution?.referrer || l.attribution?.utmSource || null }));
   } else if (key.startsWith('reason:')) {
     const r = key.slice(7);
     def = { ...DRILLS.turnedAway, title: `Turned away: ${r}` };
@@ -799,6 +863,10 @@ function openHow() {
         <p>Minutes from the lead being created to the <b>first outbound call</b> from the team to that person, answered or not. Emails and texts don't stop the clock, so this measures how fast somebody picks up the phone.</p>
         <p>It counts business hours only (${esc((cfg.speedToLead?.businessHours?.days || []).length === 5 ? 'Mon\u2013Fri' : 'set days')} ${cfg.speedToLead?.businessHours?.start ?? 9}:00\u2013${cfg.speedToLead?.businessHours?.end ?? 18}:00, ${esc(TZ())}), so a lead arriving at 8pm isn't penalised for the overnight wait. <b>Contacted</b> is broader than this: it counts a reply from the lead on any channel, a connected call of a minute or more, or a booked appointment.</p>
         <p>Calls must be logged in GoHighLevel to be counted. Calls made outside GHL leave no record for the dashboard to time, and the tile will show a dash.</p></section>
+      <section><h4>Where leads come from</h4>
+        <p>Each lead is placed in one channel using its <b>first-touch</b> attribution, which is what GoHighLevel recorded the first time that person reached the site: the referring site, the campaign tags on the link (utm_source, utm_medium) and the advertising click IDs (gclid for Google Ads, msclkid for Bing Ads, fbclid for Meta). The first matching rule wins, so a paid click is never counted as organic.</p>
+        <p><b>${esc(cfg.channels?.directLabel || 'Direct')}</b> means the person arrived with no referrer and no campaign tags, usually by typing the address or using a bookmark. <b>${esc(cfg.channels?.unknownLabel || 'Unknown')}</b> means no attribution was recorded at all, which is normal for leads that came by phone, by personal referral or by manual entry. Both sit below the line in the table because neither is a marketing channel.</p>
+        <p>${esc(cfg.attributionDisclaimer || '')}</p></section>
       <section><h4>Goals and badges</h4>
         <ul>
           <li>Lead → signed: ${G.leadToSignedPct ?? '—'}% or more. Speed to first contact: ${G.speedToLeadMin ?? '—'} minutes or less. Contacted within 5 min: ${G.within5Pct ?? '—'}%.</li>
@@ -841,7 +909,9 @@ async function refresh() {
       say('Still running. The page will pick up the new data on its own when it lands.');
     } else {
       await reloadAll();
-      say((records || pub).generatedAt !== before ? 'Loaded newer data.' : 'You already have the newest data. It syncs a few times a day' + (records ? '.' : '; unlock names to start a sync right now.'));
+      const newer = (records || pub).generatedAt !== before;
+      say(!records ? (newer ? 'Loaded newer data.' : 'Reloaded the latest published data. Open the scorecard from inside your CRM to start a sync on demand.')
+        : newer ? 'Loaded newer data.' : 'You already have the newest data. It syncs a few times a day.');
     }
   } catch (e) { say(`Refresh failed: ${e.message}`); }
   finally { btn.disabled = false; icon.classList.remove('spin'); }
@@ -890,6 +960,7 @@ $('applyCustom').addEventListener('click', () => {
 });
 $('refreshBtn').addEventListener('click', refresh);
 $('howBtn').addEventListener('click', () => { if (cfg) openHow(); });
+document.addEventListener('click', e => { if (e.target.closest('#discMore') && cfg) { openHow(); setTimeout(() => { const h = [...$('modal').querySelectorAll('.how h4')].find(x => x.textContent.includes('Where leads come from')); h?.scrollIntoView({ block: 'start', behavior: 'smooth' }); }, 60); } });
 $('lockBtn').addEventListener('click', () => (records ? lock() : openUnlock(null)));
 const tip = $('tip');
 document.addEventListener('mousemove', e => {
@@ -905,6 +976,9 @@ document.addEventListener('mousemove', e => {
 (async () => {
   try {
     await loadPublic();
+    // A key carried in the link (#k=…) unlocks silently, e.g. from a GHL Custom Menu Link, then is scrubbed from the address bar.
+    const m = /(?:^|[#&])k=([^&]+)/.exec(location.hash || '');
+    if (m) { store.set('lfmp-pass', decodeURIComponent(m[1])); history.replaceState(null, '', location.pathname + location.search); }
     const pass = store.get('lfmp-pass');
     if (pass && pub.detailsAvailable) { try { await unlock(pass, true); } catch { store.set('lfmp-pass', null); } }
     compute(); render();

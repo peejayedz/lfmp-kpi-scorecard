@@ -82,7 +82,7 @@ export function classify(lead, cfg, consultsByContact = {}, nowMs = Date.now()) 
   const turnedAwayReason = !turnedAway ? null
     : reasonTag ? cap1(String(reasonTag).slice(prefix.length).replace(/^[\s:–-]+/, ''))
     : lead.lostReason ? lead.lostReason
-    : hasAny(TA.stages, [stage]) ? lead.stage
+    : hasAny(TA.stages, [stage]) ? ((TA.reasonLabels || {})[Object.keys(TA.reasonLabels || {}).find(k => norm(k) === stage)] || lead.stage)
     : markedNo ? 'Not qualified' : 'No reason recorded';
   const step = signed ? 'Signed' : agreementSent ? 'Agreement sent' : held ? 'Consult held' : booked ? 'Consult booked' : qualified ? 'Qualified' : contacted ? 'Contacted' : 'New';
   return { contacted, qualified, consultBooked: booked, consultHeld: held, bookedPast, noShow, noShowBy, agreementSent, signed, turnedAway, turnedAwayReason, step,
