@@ -33,6 +33,7 @@
   --ok-bg:#1f3a27; --ok-ink:#8fd3a0; --bad-bg:#45231f; --bad-ink:#f2a49b; --warn-bg:#3b3019; --warn-ink:#ecd08a; --warn-line:#5c4a22;
   --dot-good:#6cc483; --dot-bad:#ee8076; --dot-focus:#7d9bd1; --shadow:0 12px 40px rgba(0,0,0,.6); color-scheme:dark;}
 *,*::before,*::after{box-sizing:inherit}
+[hidden]{display:none !important}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 body{margin:0;background:var(--page);color:var(--ink);font:15px/1.45 var(--sans);-webkit-font-smoothing:antialiased}
 button,input,select{font:inherit;color:inherit}
@@ -656,14 +657,16 @@ function execSummary() {
   const focus = [];
   for (const m of misses) { const a = F[m.gk]; if (a && !focus.includes(a)) focus.push(a); if (focus.length >= 2) break; }
   if (focus.length < 2 && top && c.turnedAway >= MIN() && F.turnedAway) focus.push(F.turnedAway);
-  if (!focus.length) focus.push('Every goal is on track. Keep the same follow-up rhythm and watch lead volume.');
+  if (!focus.length) focus.push(scored.length === 0
+    ? 'Not enough data yet to recommend a focus. Make sure every new lead is moved through the pipeline stages as it progresses, so each step can be measured.'
+    : 'Every measurable goal is on track. Keep the same follow-up rhythm and watch lead volume.');
   const li = (arr, empty) => arr.length ? `<ul>${arr.map(x => `<li>${x}</li>`).join('')}</ul>` : `<p class="none">${empty}</p>`;
   const scorable = scored.length, totalGoals = GOALS.filter(([, , gk]) => t[gk] !== undefined).length;
   const coverage = scorable < totalGoals ? ` ${scorable} of ${totalGoals} metrics have enough data to score; the other ${totalGoals - scorable} are waiting on data.` : '';
   $('exec').innerHTML = n === 0
     ? `<section style="--c:var(--dot-focus);grid-column:1/-1"><h2>No new leads in these dates yet</h2><p class="none">Pick a wider date range to see the scorecard.</p></section>`
     : `<section style="--c:var(--dot-good)"><h2>Going well</h2>${li(good, `No metric is above goal.${esc(coverage)}`)}</section>
-       <section style="--c:var(--dot-bad)"><h2>Needs attention</h2>${li(bad, 'Nothing below goal.')}</section>
+       <section style="--c:var(--dot-bad)"><h2>Needs attention</h2>${li(bad, scored.length === 0 ? 'Not enough data yet to judge any metric against its goal.' : 'Nothing below goal.')}</section>
        <section style="--c:var(--dot-focus)"><h2>Recommended focus</h2>${li(focus.slice(0, 2).map(esc), '')}</section>`;
 }
 
