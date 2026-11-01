@@ -450,9 +450,19 @@ const DEFS = {
 function renderNotice() {
   const N = cfg.notice || {};
   const el = $('notice');
-  if (!N.show) { el.hidden = true; el.innerHTML = ''; return; }
+  const A = N.autoHide || null;
+  const moved = A ? (pub?.periods?.[A.window || 'last90']?.current?.stageMoved ?? 0) : null;
+  if (!N.show || (A && moved >= A.minLeadsMoved)) { el.hidden = true; el.innerHTML = ''; return; }
+  // After the testing period has ended once, a returning banner means activity has dropped, not that the scorecard is new.
+  const lowActivity = !!(A && pub?.notice?.graduatedAt);
+  const L = N.lowActivity || {};
+  const title = lowActivity ? (L.title || 'Low pipeline activity') : N.title;
+  const text = lowActivity ? (L.text || '') : (N.text || '');
+  const progress = !A ? ''
+    : lowActivity ? ` This notice clears once ${A.minLeadsMoved} leads from the last 90 days have moved through the pipeline again (${moved} now).`
+    : ` This notice disappears automatically once ${A.minLeadsMoved} leads from the last 90 days have moved through the pipeline (${moved} so far).`;
   el.hidden = false;
-  el.innerHTML = `<div class="notice" role="status"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18.5A2 2 0 0 0 3.5 21.5h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg><div>${N.title ? `<b>${esc(N.title)}</b>` : ''}${esc(N.text || '')}</div></div>`;
+  el.innerHTML = `<div class="notice" role="status"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18.5A2 2 0 0 0 3.5 21.5h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg><div>${title ? `<b>${esc(title)}</b>` : ''}${esc(text)}${esc(progress)}</div></div>`;
 }
 
 // ---------- building blocks ----------

@@ -300,6 +300,19 @@ const out = {
   periods,
 };
 
+// Testing banner: remember the first time the firm reached the activity threshold, carried forward
+// from the previous data/kpis.json. Before that date the banner is "Testing period"; if activity
+// later drops below the threshold, the page shows a low-activity notice instead.
+{
+  const A = cfg.notice?.autoHide;
+  let prevGrad = null;
+  try { prevGrad = JSON.parse(await readFile(new URL('../data/kpis.json', import.meta.url), 'utf8')).notice?.graduatedAt || null; } catch {}
+  const moved = A ? (periods[A.window || 'last90']?.current?.stageMoved ?? 0) : 0;
+  const graduatedAt = prevGrad || (A && moved >= A.minLeadsMoved ? records.generatedAt : null);
+  out.notice = { graduatedAt };
+  if (graduatedAt && !prevGrad) console.log(`Testing period ended: ${moved} leads moved in the last 90 days (threshold ${A.minLeadsMoved}).`);
+}
+
 const dataDir = new URL('../data/', import.meta.url);
 await mkdir(dataDir, { recursive: true });
 await writeFile(new URL('kpis.json', dataDir), JSON.stringify(out, null, 2) + '\n');

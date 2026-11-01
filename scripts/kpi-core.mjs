@@ -84,8 +84,11 @@ export function classify(lead, cfg, consultsByContact = {}, nowMs = Date.now()) 
     : lead.lostReason ? lead.lostReason
     : hasAny(TA.stages, [stage]) ? ((TA.reasonLabels || {})[Object.keys(TA.reasonLabels || {}).find(k => norm(k) === stage)] || lead.stage)
     : markedNo ? 'Not qualified' : 'No reason recorded';
+  // A card someone actually moved: it sits in any mapped stage (or a turned-away stage), or was marked Won/Lost.
+  const mapped = Object.values(S).flat().concat(TA.stages || []).map(norm);
+  const stageMoved = mapped.includes(stage) || lead.status === 'won' || lead.status === 'lost';
   const step = signed ? 'Signed' : agreementSent ? 'Agreement sent' : held ? 'Consult held' : booked ? 'Consult booked' : qualified ? 'Qualified' : contacted ? 'Contacted' : 'New';
-  return { contacted, qualified, consultBooked: booked, consultHeld: held, bookedPast, noShow, noShowBy, agreementSent, signed, turnedAway, turnedAwayReason, step,
+  return { contacted, qualified, consultBooked: booked, consultHeld: held, bookedPast, noShow, noShowBy, agreementSent, signed, turnedAway, turnedAwayReason, step, stageMoved,
     nextConsult: appts.map(a => a.startTime).sort().pop() || null };
 }
 const cap1 = s => (s ? s.charAt(0).toUpperCase() + s.slice(1) : s);
@@ -233,6 +236,7 @@ export function summarize(L) {
     bySource: Object.values(src).sort((a, b) => b[1] - a[1] || b[2] - a[2]),
     byChannel: Object.values(ch).sort((a, b) => b[1] - a[1] || b[2] - a[2]),
     attributedLeads: attributed,
+    stageMoved: L.newLeads.filter(l => l.stageMoved).length,
     attributionPct: pct(attributed, n),
     funnel: [
       ['New leads', n, 'newLeads', null], ['Contacted', L.contacted.length, 'contacted', 'of leads'],
