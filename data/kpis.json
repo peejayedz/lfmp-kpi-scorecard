@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-11-01T09:39:55.136Z",
-  "location": "Law Firm Marketing Pros",
+  "generatedAt": "2026-11-01T14:05:18.185Z",
+  "location": "LeadPro",
   "targets": {
     "leadToSignedPct": 8,
     "speedToLeadMin": 5,
@@ -22,7 +22,7 @@
     "today": {
       "label": "Today",
       "from": 1793505600000,
-      "to": 1793525995136,
+      "to": 1793541918185,
       "current": {
         "totalLeads": 0,
         "contacted": 0,
@@ -340,7 +340,7 @@
     "thisWeek": {
       "label": "This week",
       "from": 1792987200000,
-      "to": 1793525995136,
+      "to": 1793541918185,
       "current": {
         "totalLeads": 1,
         "contacted": 0,
@@ -378,7 +378,7 @@
         ],
         "byChannel": [
           [
-            "Unknown",
+            "Unknown source",
             1,
             0
           ]
@@ -482,7 +482,7 @@
             0
           ],
           [
-            "Unknown",
+            "Unknown source",
             1,
             0
           ]
@@ -591,7 +591,7 @@
             0
           ],
           [
-            "Unknown",
+            "Unknown source",
             1,
             0
           ]
@@ -680,7 +680,7 @@
         ],
         "byChannel": [
           [
-            "Unknown",
+            "Unknown source",
             2,
             0
           ]
@@ -735,8 +735,8 @@
     },
     "last7": {
       "label": "Last 7 days",
-      "from": 1792921195136,
-      "to": 1793525995136,
+      "from": 1792937118185,
+      "to": 1793541918185,
       "current": {
         "totalLeads": 1,
         "contacted": 0,
@@ -774,7 +774,7 @@
         ],
         "byChannel": [
           [
-            "Unknown",
+            "Unknown source",
             1,
             0
           ]
@@ -878,7 +878,7 @@
             0
           ],
           [
-            "Unknown",
+            "Unknown source",
             1,
             0
           ]
@@ -933,8 +933,8 @@
     },
     "last30": {
       "label": "Last 30 days",
-      "from": 1790933995136,
-      "to": 1793525995136,
+      "from": 1790949918185,
+      "to": 1793541918185,
       "current": {
         "totalLeads": 6,
         "contacted": 1,
@@ -982,7 +982,7 @@
         ],
         "byChannel": [
           [
-            "Unknown",
+            "Unknown source",
             4,
             0
           ],
@@ -1119,8 +1119,8 @@
     },
     "last90": {
       "label": "Last 90 days",
-      "from": 1785749995136,
-      "to": 1793525995136,
+      "from": 1785765918185,
+      "to": 1793541918185,
       "current": {
         "totalLeads": 11,
         "contacted": 1,
@@ -1168,7 +1168,7 @@
         ],
         "byChannel": [
           [
-            "Unknown",
+            "Unknown source",
             9,
             0
           ],
@@ -1306,7 +1306,7 @@
     "thisMonth": {
       "label": "This month",
       "from": 1793505600000,
-      "to": 1793525995136,
+      "to": 1793541918185,
       "current": {
         "totalLeads": 0,
         "contacted": 0,
@@ -1513,7 +1513,7 @@
         ],
         "byChannel": [
           [
-            "Unknown",
+            "Unknown source",
             4,
             0
           ],
@@ -1612,7 +1612,7 @@
         ],
         "byChannel": [
           [
-            "Unknown",
+            "Unknown source",
             2,
             0
           ]
@@ -1668,7 +1668,7 @@
     "thisQuarter": {
       "label": "This quarter",
       "from": 1790827200000,
-      "to": 1793525995136,
+      "to": 1793541918185,
       "current": {
         "totalLeads": 6,
         "contacted": 1,
@@ -1716,7 +1716,7 @@
         ],
         "byChannel": [
           [
-            "Unknown",
+            "Unknown source",
             4,
             0
           ],
@@ -1897,7 +1897,7 @@
         ],
         "byChannel": [
           [
-            "Unknown",
+            "Unknown source",
             5,
             0
           ]
