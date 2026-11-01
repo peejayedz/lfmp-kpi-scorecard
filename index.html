@@ -147,6 +147,8 @@ button.mini{cursor:pointer} button.mini:hover span:first-child{color:var(--link)
 .src tfoot td{border-bottom:0;color:var(--ink-3);font-size:12px;padding-top:10px}
 .disc{font-size:11.5px;color:var(--ink-3);line-height:1.5;margin:10px 0 0;max-width:62ch}
 .cov{font-size:12px;color:var(--ink-2);margin:0 0 10px}
+.disc-link{color:var(--link);font-weight:600;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+.disc-link:hover{text-decoration-thickness:2px}
 .src tr[data-drill]{cursor:pointer} .src tr[data-drill]:hover td{background:var(--hover)}
 .howto ul{margin:0;padding-left:16px;font-size:13px} .howto li{margin:3px 0}
 .foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:11.5px;color:var(--ink-3);margin-top:22px}
@@ -569,11 +571,11 @@ function render() {
   <div class="bottom">
     <section>
       <h2>Where leads come from</h2>
-      <p class="cov">${c.attributedLeads ?? 0} of ${n} leads have a marketing source we could identify${n ? ` (${c.attributionPct ?? 0}%)` : ''}.</p>
+      <p class="cov">${c.attributedLeads ?? 0} of ${n} lead${n === 1 ? ' has' : 's have'} a marketing source we could identify${n ? ` (${c.attributionPct ?? 0}%)` : ''}.</p>
       <div class="srcwrap"><table class="src"><thead><tr><th colspan="2">Channel</th><th class="r">Leads</th><th class="r">Share</th><th class="r">Signed</th><th class="r">Lead → signed</th></tr></thead>
         <tbody>${srcRows}</tbody>
-        <tfoot><tr><td colspan="6">Share is of all ${n} leads, including those with no identifiable source.</td></tr></tfoot></table></div>
-      <p class="disc">${esc((cfg.attributionDisclaimer || '').split('. ')[0])}. <button class="lnk" id="discMore">Read more about attribution</button></p>
+        <tfoot><tr><td colspan="6">Share is of all ${n} lead${n === 1 ? '' : 's'}, including those with no identifiable source.</td></tr></tfoot></table></div>
+      <p class="disc">${esc((cfg.attributionDisclaimer || '').split('. ')[0])}. <a href="#" class="disc-link" id="discMore">Read more about attribution</a></p>
     </section>
     <section class="howto">
       <h2>How to read this scorecard</h2>
@@ -963,7 +965,7 @@ $('applyCustom').addEventListener('click', () => {
 });
 $('refreshBtn').addEventListener('click', refresh);
 $('howBtn').addEventListener('click', () => { if (cfg) openHow(); });
-document.addEventListener('click', e => { if (e.target.closest('#discMore') && cfg) { openHow(); setTimeout(() => { const h = [...$('modal').querySelectorAll('.how h4')].find(x => x.textContent.includes('Where leads come from')); h?.scrollIntoView({ block: 'start', behavior: 'smooth' }); }, 60); } });
+document.addEventListener('click', e => { if (e.target.closest('#discMore') && cfg) { e.preventDefault(); openHow(); setTimeout(() => { const h = [...$('modal').querySelectorAll('.how h4')].find(x => x.textContent.includes('Where leads come from')); h?.scrollIntoView({ block: 'start', behavior: 'smooth' }); }, 60); } });
 $('lockBtn').addEventListener('click', () => (records ? lock() : openUnlock(null)));
 const tip = $('tip');
 document.addEventListener('mousemove', e => {
