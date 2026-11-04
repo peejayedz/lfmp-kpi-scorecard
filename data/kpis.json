@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-04T07:57:53.591Z",
+  "generatedAt": "2026-11-04T16:12:10.146Z",
   "location": "LeadPro",
   "targets": {
     "leadToSignedPct": 8,
@@ -22,7 +22,7 @@
     "today": {
       "label": "Today",
       "from": 1793768400000,
-      "to": 1793779073591,
+      "to": 1793808730146,
       "current": {
         "totalLeads": 0,
         "contacted": 0,
@@ -356,7 +356,7 @@
     "thisWeek": {
       "label": "This week",
       "from": 1793595600000,
-      "to": 1793779073591,
+      "to": 1793808730146,
       "current": {
         "totalLeads": 1,
         "contacted": 0,
@@ -634,8 +634,8 @@
       },
       "previous": {
         "totalLeads": 3,
-        "contacted": 0,
-        "contactRatePct": 0,
+        "contacted": 1,
+        "contactRatePct": 33.3,
         "speedToLeadAvgMin": null,
         "speedMeasured": 0,
         "within5": 0,
@@ -643,7 +643,7 @@
         "missedCalls": 1,
         "missedNotReturned": 1,
         "qualified": 0,
-        "qualifiedPct": null,
+        "qualifiedPct": 0,
         "turnedAway": 0,
         "turnedAwayReasons": [],
         "consultBooked": 0,
@@ -701,7 +701,7 @@
           ],
           [
             "Contacted",
-            0,
+            1,
             "contacted",
             "of leads"
           ],
@@ -740,8 +740,8 @@
     },
     "last7": {
       "label": "Last 7 days",
-      "from": 1793174273591,
-      "to": 1793779073591,
+      "from": 1793203930146,
+      "to": 1793808730146,
       "current": {
         "totalLeads": 1,
         "contacted": 0,
@@ -925,12 +925,12 @@
     },
     "last30": {
       "label": "Last 30 days",
-      "from": 1791187073591,
-      "to": 1793779073591,
+      "from": 1791216730146,
+      "to": 1793808730146,
       "current": {
         "totalLeads": 7,
-        "contacted": 0,
-        "contactRatePct": 0,
+        "contacted": 1,
+        "contactRatePct": 14.3,
         "speedToLeadAvgMin": null,
         "speedMeasured": 0,
         "within5": 0,
@@ -938,7 +938,7 @@
         "missedCalls": 1,
         "missedNotReturned": 1,
         "qualified": 0,
-        "qualifiedPct": null,
+        "qualifiedPct": 0,
         "turnedAway": 0,
         "turnedAwayReasons": [],
         "consultBooked": 0,
@@ -996,7 +996,7 @@
           ],
           [
             "Contacted",
-            0,
+            1,
             "contacted",
             "of leads"
           ],
@@ -1113,12 +1113,12 @@
     },
     "last90": {
       "label": "Last 90 days",
-      "from": 1786003073591,
-      "to": 1793779073591,
+      "from": 1786032730146,
+      "to": 1793808730146,
       "current": {
         "totalLeads": 12,
-        "contacted": 0,
-        "contactRatePct": 0,
+        "contacted": 1,
+        "contactRatePct": 8.3,
         "speedToLeadAvgMin": null,
         "speedMeasured": 0,
         "within5": 0,
@@ -1126,7 +1126,7 @@
         "missedCalls": 14,
         "missedNotReturned": 14,
         "qualified": 0,
-        "qualifiedPct": null,
+        "qualifiedPct": 0,
         "turnedAway": 0,
         "turnedAwayReasons": [],
         "consultBooked": 0,
@@ -1184,7 +1184,7 @@
           ],
           [
             "Contacted",
-            0,
+            1,
             "contacted",
             "of leads"
           ],
@@ -1302,7 +1302,7 @@
     "thisMonth": {
       "label": "This month",
       "from": 1793505600000,
-      "to": 1793779073591,
+      "to": 1793808730146,
       "current": {
         "totalLeads": 1,
         "contacted": 0,
@@ -1478,8 +1478,8 @@
       "to": 1793505600000,
       "current": {
         "totalLeads": 6,
-        "contacted": 0,
-        "contactRatePct": 0,
+        "contacted": 1,
+        "contactRatePct": 16.7,
         "speedToLeadAvgMin": null,
         "speedMeasured": 0,
         "within5": 0,
@@ -1487,7 +1487,7 @@
         "missedCalls": 1,
         "missedNotReturned": 1,
         "qualified": 0,
-        "qualifiedPct": null,
+        "qualifiedPct": 0,
         "turnedAway": 0,
         "turnedAwayReasons": [],
         "consultBooked": 0,
@@ -1545,7 +1545,7 @@
           ],
           [
             "Contacted",
-            0,
+            1,
             "contacted",
             "of leads"
           ],
@@ -1680,11 +1680,11 @@
     "thisQuarter": {
       "label": "This quarter",
       "from": 1790827200000,
-      "to": 1793779073591,
+      "to": 1793808730146,
       "current": {
         "totalLeads": 7,
-        "contacted": 0,
-        "contactRatePct": 0,
+        "contacted": 1,
+        "contactRatePct": 14.3,
         "speedToLeadAvgMin": null,
         "speedMeasured": 0,
         "within5": 0,
@@ -1692,7 +1692,7 @@
         "missedCalls": 1,
         "missedNotReturned": 1,
         "qualified": 0,
-        "qualifiedPct": null,
+        "qualifiedPct": 0,
         "turnedAway": 0,
         "turnedAwayReasons": [],
         "consultBooked": 0,
@@ -1750,7 +1750,7 @@
           ],
           [
             "Contacted",
-            0,
+            1,
             "contacted",
             "of leads"
           ],
