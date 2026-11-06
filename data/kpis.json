@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-05T18:40:56.640Z",
+  "generatedAt": "2026-11-06T00:07:37.554Z",
   "location": "LeadPro",
   "targets": {
     "leadToSignedPct": 8,
@@ -22,7 +22,7 @@
     "today": {
       "label": "Today",
       "from": 1793854800000,
-      "to": 1793904056640,
+      "to": 1793923657554,
       "current": {
         "totalLeads": 0,
         "contacted": 0,
@@ -380,7 +380,7 @@
     "thisWeek": {
       "label": "This week",
       "from": 1793595600000,
-      "to": 1793904056640,
+      "to": 1793923657554,
       "current": {
         "totalLeads": 2,
         "contacted": 0,
@@ -764,8 +764,8 @@
     },
     "last7": {
       "label": "Last 7 days",
-      "from": 1793299256640,
-      "to": 1793904056640,
+      "from": 1793318857554,
+      "to": 1793923657554,
       "current": {
         "totalLeads": 2,
         "contacted": 0,
@@ -949,8 +949,8 @@
     },
     "last30": {
       "label": "Last 30 days",
-      "from": 1791312056640,
-      "to": 1793904056640,
+      "from": 1791331657554,
+      "to": 1793923657554,
       "current": {
         "totalLeads": 8,
         "contacted": 1,
@@ -1137,8 +1137,8 @@
     },
     "last90": {
       "label": "Last 90 days",
-      "from": 1786128056640,
-      "to": 1793904056640,
+      "from": 1786147657554,
+      "to": 1793923657554,
       "current": {
         "totalLeads": 13,
         "contacted": 1,
@@ -1326,7 +1326,7 @@
     "thisMonth": {
       "label": "This month",
       "from": 1793505600000,
-      "to": 1793904056640,
+      "to": 1793923657554,
       "current": {
         "totalLeads": 2,
         "contacted": 0,
@@ -1704,7 +1704,7 @@
     "thisQuarter": {
       "label": "This quarter",
       "from": 1790827200000,
-      "to": 1793904056640,
+      "to": 1793923657554,
       "current": {
         "totalLeads": 8,
         "contacted": 1,
