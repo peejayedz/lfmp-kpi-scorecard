@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-12T22:51:00.884Z",
+  "generatedAt": "2026-11-13T03:22:04.416Z",
   "location": "LeadPro",
   "targets": {
     "leadToSignedPct": 8,
@@ -22,9 +22,9 @@
     "today": {
       "label": "Today",
       "from": 1794459600000,
-      "to": 1794523860884,
+      "to": 1794540124416,
       "current": {
-        "totalLeads": 5,
+        "totalLeads": 6,
         "contacted": 0,
         "contactRatePct": 0,
         "speedToLeadAvgMin": null,
@@ -54,7 +54,7 @@
         "bySource": [
           [
             "Unknown",
-            4,
+            5,
             0
           ],
           [
@@ -66,7 +66,7 @@
         "byChannel": [
           [
             "Third Party",
-            3,
+            4,
             0
           ],
           [
@@ -80,13 +80,13 @@
             0
           ]
         ],
-        "attributedLeads": 5,
+        "attributedLeads": 6,
         "stageMoved": 0,
         "attributionPct": 100,
         "funnel": [
           [
             "New leads",
-            5,
+            6,
             "newLeads",
             null
           ],
@@ -129,7 +129,7 @@
         ]
       },
       "previous": {
-        "totalLeads": 1,
+        "totalLeads": 3,
         "contacted": 0,
         "contactRatePct": 0,
         "speedToLeadAvgMin": null,
@@ -159,24 +159,24 @@
         "bySource": [
           [
             "Unknown",
-            1,
+            3,
             0
           ]
         ],
         "byChannel": [
           [
             "Third Party",
-            1,
+            3,
             0
           ]
         ],
-        "attributedLeads": 1,
+        "attributedLeads": 3,
         "stageMoved": 0,
         "attributionPct": 100,
         "funnel": [
           [
             "New leads",
-            1,
+            3,
             "newLeads",
             null
           ],
@@ -407,9 +407,9 @@
     "thisWeek": {
       "label": "This week",
       "from": 1794200400000,
-      "to": 1794523860884,
+      "to": 1794540124416,
       "current": {
-        "totalLeads": 10,
+        "totalLeads": 11,
         "contacted": 0,
         "contactRatePct": 0,
         "speedToLeadAvgMin": null,
@@ -439,7 +439,7 @@
         "bySource": [
           [
             "Unknown",
-            9,
+            10,
             0
           ],
           [
@@ -451,7 +451,7 @@
         "byChannel": [
           [
             "Third Party",
-            8,
+            9,
             0
           ],
           [
@@ -465,13 +465,13 @@
             0
           ]
         ],
-        "attributedLeads": 10,
+        "attributedLeads": 11,
         "stageMoved": 0,
         "attributionPct": 100,
         "funnel": [
           [
             "New leads",
-            10,
+            11,
             "newLeads",
             null
           ],
@@ -791,10 +791,10 @@
     },
     "last7": {
       "label": "Last 7 days",
-      "from": 1793919060884,
-      "to": 1794523860884,
+      "from": 1793935324416,
+      "to": 1794540124416,
       "current": {
-        "totalLeads": 10,
+        "totalLeads": 11,
         "contacted": 0,
         "contactRatePct": 0,
         "speedToLeadAvgMin": null,
@@ -824,7 +824,7 @@
         "bySource": [
           [
             "Unknown",
-            9,
+            10,
             0
           ],
           [
@@ -836,7 +836,7 @@
         "byChannel": [
           [
             "Third Party",
-            8,
+            9,
             0
           ],
           [
@@ -850,13 +850,13 @@
             0
           ]
         ],
-        "attributedLeads": 10,
+        "attributedLeads": 11,
         "stageMoved": 0,
         "attributionPct": 100,
         "funnel": [
           [
             "New leads",
-            10,
+            11,
             "newLeads",
             null
           ],
@@ -991,18 +991,18 @@
     },
     "last30": {
       "label": "Last 30 days",
-      "from": 1791931860884,
-      "to": 1794523860884,
+      "from": 1791948124416,
+      "to": 1794540124416,
       "current": {
-        "totalLeads": 18,
+        "totalLeads": 19,
         "contacted": 1,
-        "contactRatePct": 5.6,
+        "contactRatePct": 5.3,
         "speedToLeadAvgMin": null,
         "speedMeasured": 0,
         "within5": 0,
         "within5Pct": 0,
-        "missedCalls": 1,
-        "missedNotReturned": 1,
+        "missedCalls": 0,
+        "missedNotReturned": 0,
         "qualified": 0,
         "qualifiedPct": 0,
         "turnedAway": 0,
@@ -1024,7 +1024,7 @@
         "bySource": [
           [
             "Unknown",
-            10,
+            11,
             0
           ],
           [
@@ -1046,7 +1046,7 @@
         "byChannel": [
           [
             "Third Party",
-            8,
+            9,
             0
           ],
           [
@@ -1065,13 +1065,13 @@
             0
           ]
         ],
-        "attributedLeads": 12,
+        "attributedLeads": 13,
         "stageMoved": 0,
-        "attributionPct": 66.7,
+        "attributionPct": 68.4,
         "funnel": [
           [
             "New leads",
-            18,
+            19,
             "newLeads",
             null
           ],
@@ -1194,18 +1194,18 @@
     },
     "last90": {
       "label": "Last 90 days",
-      "from": 1786747860884,
-      "to": 1794523860884,
+      "from": 1786764124416,
+      "to": 1794540124416,
       "current": {
-        "totalLeads": 22,
+        "totalLeads": 23,
         "contacted": 1,
-        "contactRatePct": 4.5,
+        "contactRatePct": 4.3,
         "speedToLeadAvgMin": null,
         "speedMeasured": 0,
         "within5": 0,
         "within5Pct": 0,
-        "missedCalls": 10,
-        "missedNotReturned": 10,
+        "missedCalls": 9,
+        "missedNotReturned": 9,
         "qualified": 0,
         "qualifiedPct": 0,
         "turnedAway": 0,
@@ -1227,7 +1227,7 @@
         "bySource": [
           [
             "Unknown",
-            11,
+            12,
             0
           ],
           [
@@ -1254,7 +1254,7 @@
           ],
           [
             "Third Party",
-            8,
+            9,
             0
           ],
           [
@@ -1268,13 +1268,13 @@
             0
           ]
         ],
-        "attributedLeads": 12,
+        "attributedLeads": 13,
         "stageMoved": 0,
-        "attributionPct": 54.5,
+        "attributionPct": 56.5,
         "funnel": [
           [
             "New leads",
-            22,
+            23,
             "newLeads",
             null
           ],
@@ -1398,9 +1398,9 @@
     "thisMonth": {
       "label": "This month",
       "from": 1793505600000,
-      "to": 1794523860884,
+      "to": 1794540124416,
       "current": {
-        "totalLeads": 12,
+        "totalLeads": 13,
         "contacted": 0,
         "contactRatePct": 0,
         "speedToLeadAvgMin": null,
@@ -1430,7 +1430,7 @@
         "bySource": [
           [
             "Unknown",
-            9,
+            10,
             0
           ],
           [
@@ -1447,7 +1447,7 @@
         "byChannel": [
           [
             "Third Party",
-            8,
+            9,
             0
           ],
           [
@@ -1466,13 +1466,13 @@
             0
           ]
         ],
-        "attributedLeads": 10,
+        "attributedLeads": 11,
         "stageMoved": 0,
-        "attributionPct": 83.3,
+        "attributionPct": 84.6,
         "funnel": [
           [
             "New leads",
-            12,
+            13,
             "newLeads",
             null
           ],
@@ -1605,8 +1605,8 @@
         "speedMeasured": 0,
         "within5": 0,
         "within5Pct": 0,
-        "missedCalls": 1,
-        "missedNotReturned": 1,
+        "missedCalls": 0,
+        "missedNotReturned": 0,
         "qualified": 0,
         "qualifiedPct": 0,
         "turnedAway": 0,
@@ -1801,17 +1801,17 @@
     "thisQuarter": {
       "label": "This quarter",
       "from": 1790827200000,
-      "to": 1794523860884,
+      "to": 1794540124416,
       "current": {
-        "totalLeads": 18,
+        "totalLeads": 19,
         "contacted": 1,
-        "contactRatePct": 5.6,
+        "contactRatePct": 5.3,
         "speedToLeadAvgMin": null,
         "speedMeasured": 0,
         "within5": 0,
         "within5Pct": 0,
-        "missedCalls": 1,
-        "missedNotReturned": 1,
+        "missedCalls": 0,
+        "missedNotReturned": 0,
         "qualified": 0,
         "qualifiedPct": 0,
         "turnedAway": 0,
@@ -1833,7 +1833,7 @@
         "bySource": [
           [
             "Unknown",
-            10,
+            11,
             0
           ],
           [
@@ -1855,7 +1855,7 @@
         "byChannel": [
           [
             "Third Party",
-            8,
+            9,
             0
           ],
           [
@@ -1874,13 +1874,13 @@
             0
           ]
         ],
-        "attributedLeads": 12,
+        "attributedLeads": 13,
         "stageMoved": 0,
-        "attributionPct": 66.7,
+        "attributionPct": 68.4,
         "funnel": [
           [
             "New leads",
-            18,
+            19,
             "newLeads",
             null
           ],
