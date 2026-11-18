@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-18T11:29:52.234Z",
+  "generatedAt": "2026-11-18T19:33:26.959Z",
   "location": "LeadPro",
   "targets": {
     "leadToSignedPct": 8,
@@ -22,15 +22,15 @@
     "today": {
       "label": "Today",
       "from": 1794978000000,
-      "to": 1795001392234,
+      "to": 1795030406959,
       "current": {
-        "totalLeads": 0,
+        "totalLeads": 1,
         "contacted": 0,
-        "contactRatePct": null,
+        "contactRatePct": 0,
         "speedToLeadAvgMin": null,
         "speedMeasured": 0,
         "within5": 0,
-        "within5Pct": null,
+        "within5Pct": 0,
         "missedCalls": 0,
         "missedNotReturned": 0,
         "qualified": 0,
@@ -48,18 +48,30 @@
         "sentRatePct": null,
         "signed": 0,
         "signRatePct": null,
-        "leadToSignedPct": null,
+        "leadToSignedPct": 0,
         "adSpend": null,
         "costPerSigned": null,
-        "bySource": [],
-        "byChannel": [],
-        "attributedLeads": 0,
+        "bySource": [
+          [
+            "Unknown",
+            1,
+            0
+          ]
+        ],
+        "byChannel": [
+          [
+            "Social media",
+            1,
+            0
+          ]
+        ],
+        "attributedLeads": 1,
         "stageMoved": 0,
-        "attributionPct": null,
+        "attributionPct": 100,
         "funnel": [
           [
             "New leads",
-            0,
+            1,
             "newLeads",
             null
           ],
@@ -461,11 +473,11 @@
     "thisWeek": {
       "label": "This week",
       "from": 1794805200000,
-      "to": 1795001392234,
+      "to": 1795030406959,
       "current": {
-        "totalLeads": 54,
+        "totalLeads": 55,
         "contacted": 52,
-        "contactRatePct": 96.3,
+        "contactRatePct": 94.5,
         "speedToLeadAvgMin": null,
         "speedMeasured": 0,
         "within5": 0,
@@ -508,7 +520,7 @@
           ],
           [
             "Unknown",
-            6,
+            7,
             0
           ],
           [
@@ -599,6 +611,11 @@
             0
           ],
           [
+            "Social media",
+            1,
+            0
+          ],
+          [
             "CRM Workflows",
             1,
             0
@@ -609,13 +626,13 @@
             0
           ]
         ],
-        "attributedLeads": 45,
+        "attributedLeads": 46,
         "stageMoved": 53,
-        "attributionPct": 83.3,
+        "attributionPct": 83.6,
         "funnel": [
           [
             "New leads",
-            54,
+            55,
             "newLeads",
             null
           ],
@@ -658,7 +675,7 @@
         ]
       },
       "previous": {
-        "totalLeads": 2,
+        "totalLeads": 3,
         "contacted": 0,
         "contactRatePct": 0,
         "speedToLeadAvgMin": null,
@@ -687,12 +704,12 @@
         "costPerSigned": null,
         "bySource": [
           [
-            "2027 AI-Ready Marketing Growth Kit DLF",
-            1,
+            "Unknown",
+            2,
             0
           ],
           [
-            "Unknown",
+            "2027 AI-Ready Marketing Growth Kit DLF",
             1,
             0
           ]
@@ -700,17 +717,17 @@
         "byChannel": [
           [
             "Third Party",
-            2,
+            3,
             0
           ]
         ],
-        "attributedLeads": 2,
+        "attributedLeads": 3,
         "stageMoved": 0,
         "attributionPct": 100,
         "funnel": [
           [
             "New leads",
-            2,
+            3,
             "newLeads",
             null
           ],
@@ -985,8 +1002,8 @@
     },
     "last7": {
       "label": "Last 7 days",
-      "from": 1794396592234,
-      "to": 1795001392234,
+      "from": 1794425606959,
+      "to": 1795030406959,
       "current": {
         "totalLeads": 82,
         "contacted": 60,
@@ -1140,12 +1157,17 @@
           ],
           [
             "Third Party",
-            16,
+            15,
             0
           ],
           [
             "Unknown source",
             9,
+            0
+          ],
+          [
+            "Social media",
+            2,
             0
           ],
           [
@@ -1155,11 +1177,6 @@
           ],
           [
             "CRM Workflows",
-            1,
-            0
-          ],
-          [
-            "Social media",
             1,
             0
           ],
@@ -1247,17 +1264,12 @@
         "costPerSigned": null,
         "bySource": [
           [
-            "2027 AI-Ready Marketing Growth Kit DLF",
-            1,
-            0
-          ],
-          [
             "Unknown",
-            1,
+            2,
             0
           ],
           [
-            "Calendly",
+            "2027 AI-Ready Marketing Growth Kit DLF",
             1,
             0
           ]
@@ -1265,18 +1277,13 @@
         "byChannel": [
           [
             "Third Party",
-            2,
-            0
-          ],
-          [
-            "Unknown source",
-            1,
+            3,
             0
           ]
         ],
-        "attributedLeads": 2,
+        "attributedLeads": 3,
         "stageMoved": 0,
-        "attributionPct": 66.7,
+        "attributionPct": 100,
         "funnel": [
           [
             "New leads",
@@ -1325,8 +1332,8 @@
     },
     "last30": {
       "label": "Last 30 days",
-      "from": 1792409392234,
-      "to": 1795001392234,
+      "from": 1792438406959,
+      "to": 1795030406959,
       "current": {
         "totalLeads": 88,
         "contacted": 60,
@@ -1335,8 +1342,8 @@
         "speedMeasured": 0,
         "within5": 0,
         "within5Pct": 0,
-        "missedCalls": 1,
-        "missedNotReturned": 1,
+        "missedCalls": 0,
+        "missedNotReturned": 0,
         "qualified": 18,
         "qualifiedPct": 30,
         "turnedAway": 1,
@@ -1363,7 +1370,7 @@
         "bySource": [
           [
             "Unknown",
-            23,
+            24,
             0
           ],
           [
@@ -1373,7 +1380,7 @@
           ],
           [
             "Calendly",
-            10,
+            9,
             0
           ],
           [
@@ -1485,7 +1492,12 @@
           ],
           [
             "Unknown source",
-            13,
+            12,
+            0
+          ],
+          [
+            "Social media",
+            2,
             0
           ],
           [
@@ -1499,19 +1511,14 @@
             0
           ],
           [
-            "Social media",
-            1,
-            0
-          ],
-          [
             "Other referral",
             1,
             0
           ]
         ],
-        "attributedLeads": 75,
+        "attributedLeads": 76,
         "stageMoved": 61,
-        "attributionPct": 85.2,
+        "attributionPct": 86.4,
         "funnel": [
           [
             "New leads",
@@ -1558,15 +1565,15 @@
         ]
       },
       "previous": {
-        "totalLeads": 2,
+        "totalLeads": 3,
         "contacted": 0,
         "contactRatePct": 0,
         "speedToLeadAvgMin": null,
         "speedMeasured": 0,
         "within5": 0,
         "within5Pct": 0,
-        "missedCalls": 1,
-        "missedNotReturned": 1,
+        "missedCalls": 2,
+        "missedNotReturned": 2,
         "qualified": 0,
         "qualifiedPct": null,
         "turnedAway": 0,
@@ -1588,14 +1595,14 @@
         "bySource": [
           [
             "Calendly",
-            2,
+            3,
             0
           ]
         ],
         "byChannel": [
           [
             "Unknown source",
-            2,
+            3,
             0
           ]
         ],
@@ -1605,7 +1612,7 @@
         "funnel": [
           [
             "New leads",
-            2,
+            3,
             "newLeads",
             null
           ],
@@ -1650,8 +1657,8 @@
     },
     "last90": {
       "label": "Last 90 days",
-      "from": 1787225392234,
-      "to": 1795001392234,
+      "from": 1787254406959,
+      "to": 1795030406959,
       "current": {
         "totalLeads": 94,
         "contacted": 60,
@@ -1688,12 +1695,12 @@
         "bySource": [
           [
             "Unknown",
-            24,
+            25,
             0
           ],
           [
             "Calendly",
-            15,
+            14,
             0
           ],
           [
@@ -1805,12 +1812,17 @@
           ],
           [
             "Unknown source",
-            19,
+            18,
             0
           ],
           [
             "Third Party",
             18,
+            0
+          ],
+          [
+            "Social media",
+            2,
             0
           ],
           [
@@ -1824,19 +1836,14 @@
             0
           ],
           [
-            "Social media",
-            1,
-            0
-          ],
-          [
             "Other referral",
             1,
             0
           ]
         ],
-        "attributedLeads": 75,
+        "attributedLeads": 76,
         "stageMoved": 61,
-        "attributionPct": 79.8,
+        "attributionPct": 80.9,
         "funnel": [
           [
             "New leads",
@@ -1883,13 +1890,13 @@
         ]
       },
       "previous": {
-        "totalLeads": 0,
+        "totalLeads": 1,
         "contacted": 0,
-        "contactRatePct": null,
+        "contactRatePct": 0,
         "speedToLeadAvgMin": null,
         "speedMeasured": 0,
         "within5": 0,
-        "within5Pct": null,
+        "within5Pct": 0,
         "missedCalls": 13,
         "missedNotReturned": 13,
         "qualified": 0,
@@ -1907,18 +1914,30 @@
         "sentRatePct": null,
         "signed": 0,
         "signRatePct": null,
-        "leadToSignedPct": null,
+        "leadToSignedPct": 0,
         "adSpend": null,
         "costPerSigned": null,
-        "bySource": [],
-        "byChannel": [],
+        "bySource": [
+          [
+            "Calendly",
+            1,
+            0
+          ]
+        ],
+        "byChannel": [
+          [
+            "Unknown source",
+            1,
+            0
+          ]
+        ],
         "attributedLeads": 0,
         "stageMoved": 0,
-        "attributionPct": null,
+        "attributionPct": 0,
         "funnel": [
           [
             "New leads",
-            0,
+            1,
             "newLeads",
             null
           ],
@@ -1964,11 +1983,11 @@
     "thisMonth": {
       "label": "This month",
       "from": 1793505600000,
-      "to": 1795001392234,
+      "to": 1795030406959,
       "current": {
-        "totalLeads": 86,
+        "totalLeads": 87,
         "contacted": 60,
-        "contactRatePct": 69.8,
+        "contactRatePct": 69,
         "speedToLeadAvgMin": null,
         "speedMeasured": 0,
         "within5": 0,
@@ -2001,7 +2020,7 @@
         "bySource": [
           [
             "Unknown",
-            23,
+            24,
             0
           ],
           [
@@ -2127,6 +2146,11 @@
             0
           ],
           [
+            "Social media",
+            2,
+            0
+          ],
+          [
             "Meta Ads",
             2,
             0
@@ -2137,23 +2161,18 @@
             0
           ],
           [
-            "Social media",
-            1,
-            0
-          ],
-          [
             "Other referral",
             1,
             0
           ]
         ],
-        "attributedLeads": 75,
+        "attributedLeads": 76,
         "stageMoved": 61,
-        "attributionPct": 87.2,
+        "attributionPct": 87.4,
         "funnel": [
           [
             "New leads",
-            86,
+            87,
             "newLeads",
             null
           ],
@@ -2479,11 +2498,11 @@
     "thisQuarter": {
       "label": "This quarter",
       "from": 1790827200000,
-      "to": 1795001392234,
+      "to": 1795030406959,
       "current": {
-        "totalLeads": 90,
+        "totalLeads": 91,
         "contacted": 60,
-        "contactRatePct": 66.7,
+        "contactRatePct": 65.9,
         "speedToLeadAvgMin": null,
         "speedMeasured": 0,
         "within5": 0,
@@ -2516,7 +2535,7 @@
         "bySource": [
           [
             "Unknown",
-            23,
+            24,
             0
           ],
           [
@@ -2642,6 +2661,11 @@
             0
           ],
           [
+            "Social media",
+            2,
+            0
+          ],
+          [
             "Meta Ads",
             2,
             0
@@ -2652,23 +2676,18 @@
             0
           ],
           [
-            "Social media",
-            1,
-            0
-          ],
-          [
             "Other referral",
             1,
             0
           ]
         ],
-        "attributedLeads": 75,
+        "attributedLeads": 76,
         "stageMoved": 61,
-        "attributionPct": 83.3,
+        "attributionPct": 83.5,
         "funnel": [
           [
             "New leads",
-            90,
+            91,
             "newLeads",
             null
           ],
